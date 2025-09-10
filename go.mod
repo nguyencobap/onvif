@@ -1,4 +1,4 @@
-module github.com/IOTechSystems/onvif
+module github.com/nguyencobap/onvif
 
 go 1.23.0
 

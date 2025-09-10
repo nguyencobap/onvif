@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/IOTechSystems/onvif"
-	"github.com/IOTechSystems/onvif/media2"
 	"io/ioutil"
 	"log"
+
+	"github.com/nguyencobap/onvif"
+	"github.com/nguyencobap/onvif/media2"
 )
 
 func main() {

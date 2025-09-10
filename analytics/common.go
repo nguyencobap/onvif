@@ -1,6 +1,6 @@
 package analytics
 
-import "github.com/IOTechSystems/onvif/xsd"
+import "github.com/nguyencobap/onvif/xsd"
 
 type Parameters struct {
 	SimpleItemDescription  []SimpleItemDescription  `json:",omitempty"`

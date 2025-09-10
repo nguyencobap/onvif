@@ -3,8 +3,8 @@ package device
 //go:generate python3 ../python/gen_commands.py
 
 import (
-	"github.com/IOTechSystems/onvif/xsd"
-	"github.com/IOTechSystems/onvif/xsd/onvif"
+	"github.com/nguyencobap/onvif/xsd"
+	"github.com/nguyencobap/onvif/xsd/onvif"
 )
 
 type Service struct {

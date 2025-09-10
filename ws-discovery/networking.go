@@ -22,9 +22,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/IOTechSystems/onvif"
 	"github.com/beevik/etree"
 	"github.com/google/uuid"
+	"github.com/nguyencobap/onvif"
 	"golang.org/x/net/ipv4"
 )
 

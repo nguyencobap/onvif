@@ -9,10 +9,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/IOTechSystems/onvif"
-	"github.com/IOTechSystems/onvif/device"
-	wsdiscovery "github.com/IOTechSystems/onvif/ws-discovery"
 	"github.com/beevik/etree"
+	"github.com/nguyencobap/onvif"
+	"github.com/nguyencobap/onvif/device"
+	wsdiscovery "github.com/nguyencobap/onvif/ws-discovery"
 )
 
 func TestGetAvailableDevicesAtSpecificEthernetInterface(t *testing.T) {

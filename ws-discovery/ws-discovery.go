@@ -3,8 +3,8 @@ package wsdiscovery
 import (
 	"strings"
 
-	"github.com/IOTechSystems/onvif/gosoap"
 	"github.com/beevik/etree"
+	"github.com/nguyencobap/onvif/gosoap"
 )
 
 // BuildProbeMessage generates a SOAP ws-discovery Probe message

@@ -13,9 +13,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/IOTechSystems/onvif/device"
-	"github.com/IOTechSystems/onvif/gosoap"
-	"github.com/IOTechSystems/onvif/xsd/onvif"
+	"github.com/nguyencobap/onvif/device"
+	"github.com/nguyencobap/onvif/gosoap"
+	"github.com/nguyencobap/onvif/xsd/onvif"
 
 	"github.com/beevik/etree"
 )

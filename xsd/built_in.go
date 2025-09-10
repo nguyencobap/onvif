@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/IOTechSystems/onvif/xsd/iso8601"
+	"github.com/nguyencobap/onvif/xsd/iso8601"
 )
 
 /*

@@ -1,6 +1,6 @@
 package topic
 
-import "github.com/IOTechSystems/onvif/xsd"
+import "github.com/nguyencobap/onvif/xsd"
 
 type RuleEngine struct {
 	Topic                *xsd.Boolean          `xml:"topic,attr"`
