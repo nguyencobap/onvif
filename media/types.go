@@ -481,8 +481,8 @@ type SetVideoSourceConfigurationResponse struct {
 
 type SetVideoEncoderConfiguration struct {
 	XMLName          string                                  `xml:"trt:SetVideoEncoderConfiguration"`
-	Configuration    *onvif.VideoEncoderConfigurationRequest `xml:"trt:Configuration,omitempty"`
-	ForcePersistence *xsd.Boolean                            `xml:"trt:ForcePersistence,omitempty"`
+	Configuration    *onvif.VideoEncoderConfigurationRequest `xml:"trt:Configuration,"`
+	ForcePersistence *xsd.Boolean                            `xml:"trt:ForcePersistence,"`
 }
 
 type SetVideoEncoderConfigurationResponse struct {

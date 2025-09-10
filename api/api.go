@@ -307,9 +307,9 @@ func xmlProcessing(tg string) (string, error) {
 		return "", errors.New("out of range")
 	}
 	attr := strings.Index(str[1], ",attr")
-	omit := strings.Index(str[1], ",omitempty")
-	attrOmit := strings.Index(str[1], ",attr,omitempty")
-	omitAttr := strings.Index(str[1], ",omitempty,attr")
+	omit := strings.Index(str[1], ",")
+	attrOmit := strings.Index(str[1], ",attr,")
+	omitAttr := strings.Index(str[1], ",,attr")
 
 	if attr > -1 && attrOmit == -1 && omitAttr == -1 {
 		return str[1][0:attr], nil

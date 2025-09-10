@@ -89,16 +89,16 @@ type StorageConfiguration struct {
 		StorageUri xsd.AnyURI
 		User       struct {
 			UserName  xsd.String
-			Password  xsd.String  `json:",omitempty"`
-			Extension xsd.AnyType `json:",omitempty"`
+			Password  xsd.String  `json:","`
+			Extension xsd.AnyType `json:","`
 		}
-		Extension xsd.AnyURI `json:",omitempty"`
+		Extension xsd.AnyURI `json:","`
 	}
 }
 
 type StorageConfigurationData struct {
 	Type       xsd.String     `xml:"type,attr"`
-	Region     string         `xml:"tds:Region,omitempty"`
+	Region     string         `xml:"tds:Region,"`
 	LocalPath  xsd.AnyURI     `xml:"tds:LocalPath"`
 	StorageUri xsd.AnyURI     `xml:"tds:StorageUri"`
 	User       UserCredential `xml:"tds:User"`
@@ -145,11 +145,11 @@ type GetDeviceInformationResponse struct {
 // SetSystemDateAndTime and its properties are defined in the Onvif specification:
 // https://www.onvif.org/ver10/device/wsdl/devicemgmt.wsdl#op.SetSystemDateAndTime
 type SetSystemDateAndTime struct {
-	XMLName         string                 `xml:"tds:SetSystemDateAndTime,omitempty"`
-	DateTimeType    *onvif.SetDateTimeType `xml:"tds:DateTimeType,omitempty"`
-	DaylightSavings *xsd.Boolean           `xml:"tds:DaylightSavings,omitempty"`
-	TimeZone        *onvif.TimeZone        `xml:"tds:TimeZone,omitempty"`
-	UTCDateTime     *onvif.DateTimeRequest `xml:"tds:UTCDateTime,omitempty"`
+	XMLName         string                 `xml:"tds:SetSystemDateAndTime,"`
+	DateTimeType    *onvif.SetDateTimeType `xml:"tds:DateTimeType,"`
+	DaylightSavings *xsd.Boolean           `xml:"tds:DaylightSavings,"`
+	TimeZone        *onvif.TimeZone        `xml:"tds:TimeZone,"`
+	UTCDateTime     *onvif.DateTimeRequest `xml:"tds:UTCDateTime,"`
 }
 
 type SetSystemDateAndTimeResponse struct {
@@ -351,7 +351,7 @@ type GetUsersResponse struct {
 // https://www.onvif.org/ver10/device/wsdl/devicemgmt.wsdl#op.CreateUsers
 type CreateUsers struct {
 	XMLName string              `xml:"tds:CreateUsers"`
-	User    []onvif.UserRequest `xml:"tds:User,omitempty"`
+	User    []onvif.UserRequest `xml:"tds:User,"`
 }
 
 type CreateUsersResponse struct {
@@ -429,9 +429,9 @@ type GetDNSResponse struct {
 
 type SetDNS struct {
 	XMLName      string           `xml:"tds:SetDNS"`
-	FromDHCP     *xsd.Boolean     `xml:"tds:FromDHCP,omitempty"`
-	SearchDomain *xsd.Token       `xml:"tds:SearchDomain,omitempty"`
-	DNSManual    *onvif.IPAddress `xml:"tds:DNSManual,omitempty"`
+	FromDHCP     *xsd.Boolean     `xml:"tds:FromDHCP,"`
+	SearchDomain *xsd.Token       `xml:"tds:SearchDomain,"`
+	DNSManual    *onvif.IPAddress `xml:"tds:DNSManual,"`
 }
 
 type SetDNSResponse struct {
@@ -482,8 +482,8 @@ type GetNetworkInterfacesResponse struct {
 
 type SetNetworkInterfaces struct {
 	XMLName          string                                  `xml:"tds:SetNetworkInterfaces"`
-	InterfaceToken   *onvif.ReferenceToken                   `xml:"tds:InterfaceToken,omitempty"`
-	NetworkInterface *onvif.NetworkInterfaceSetConfiguration `xml:"tds:NetworkInterface,omitempty"`
+	InterfaceToken   *onvif.ReferenceToken                   `xml:"tds:InterfaceToken,"`
+	NetworkInterface *onvif.NetworkInterfaceSetConfiguration `xml:"tds:NetworkInterface,"`
 }
 
 type SetNetworkInterfacesResponse struct {
@@ -516,8 +516,8 @@ type GetNetworkDefaultGatewayResponse struct {
 
 type SetNetworkDefaultGateway struct {
 	XMLName     string            `xml:"tds:SetNetworkDefaultGateway"`
-	IPv4Address onvif.IPv4Address `xml:"tds:IPv4Address,omitempty"`
-	IPv6Address onvif.IPv6Address `xml:"tds:IPv6Address,omitempty"`
+	IPv4Address onvif.IPv4Address `xml:"tds:IPv4Address,"`
+	IPv6Address onvif.IPv6Address `xml:"tds:IPv6Address,"`
 }
 
 type SetNetworkDefaultGatewayResponse struct {
@@ -595,10 +595,10 @@ type SetAccessPolicyResponse struct {
 
 type CreateCertificate struct {
 	XMLName        string       `xml:"tds:CreateCertificate"`
-	CertificateID  xsd.Token    `xml:"tds:CertificateID,omitempty"`
-	Subject        string       `xml:"tds:Subject,omitempty"`
-	ValidNotBefore xsd.DateTime `xml:"tds:ValidNotBefore,omitempty"`
-	ValidNotAfter  xsd.DateTime `xml:"tds:ValidNotAfter,omitempty"`
+	CertificateID  xsd.Token    `xml:"tds:CertificateID,"`
+	Subject        string       `xml:"tds:Subject,"`
+	ValidNotBefore xsd.DateTime `xml:"tds:ValidNotBefore,"`
+	ValidNotAfter  xsd.DateTime `xml:"tds:ValidNotAfter,"`
 }
 
 type CreateCertificateResponse struct {

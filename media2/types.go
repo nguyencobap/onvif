@@ -31,8 +31,8 @@ type GetAnalyticsConfigurationsResponse struct {
 
 type Configurations struct {
 	onvif.ConfigurationEntity
-	AnalyticsEngineConfiguration *AnalyticsEngineConfiguration `json:",omitempty"`
-	RuleEngineConfiguration      *RuleEngineConfiguration      `json:",omitempty"`
+	AnalyticsEngineConfiguration *AnalyticsEngineConfiguration `json:","`
+	RuleEngineConfiguration      *RuleEngineConfiguration      `json:","`
 }
 
 type AnalyticsEngineConfiguration struct {
@@ -46,7 +46,7 @@ type AnalyticsModule struct {
 }
 
 type RuleEngineConfiguration struct {
-	Rule []Rule `json:",omitempty"`
+	Rule []Rule `json:","`
 }
 
 type Rule struct {
@@ -56,8 +56,8 @@ type Rule struct {
 }
 
 type Parameters struct {
-	SimpleItem  []SimpleItem  `json:",omitempty"`
-	ElementItem []ElementItem `json:",omitempty"`
+	SimpleItem  []SimpleItem  `json:","`
+	ElementItem []ElementItem `json:","`
 }
 
 type SimpleItem struct {
@@ -72,7 +72,7 @@ type ElementItem struct {
 type AddConfiguration struct {
 	XMLName       string `xml:"tr2:AddConfiguration"`
 	ProfileToken  string `xml:"tr2:ProfileToken"`
-	Name          string `xml:"tr2:Name,omitempty"`
+	Name          string `xml:"tr2:Name,"`
 	Configuration []Configuration
 }
 
@@ -88,6 +88,6 @@ type RemoveConfigurationResponse struct{}
 
 type Configuration struct {
 	XMLName xsd.String  `xml:"tr2:Configuration"`
-	Type    *xsd.String `xml:"tr2:Type,omitempty"`
-	Token   *xsd.String `xml:"tr2:Token,omitempty"`
+	Type    *xsd.String `xml:"tr2:Type,"`
+	Token   *xsd.String `xml:"tr2:Token,"`
 }

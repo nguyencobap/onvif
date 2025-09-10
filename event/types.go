@@ -52,8 +52,8 @@ type EndpointReferenceType struct { //wsa http://www.w3.org/2005/08/addressing/w
 
 // FilterType struct
 type FilterType struct {
-	TopicExpression *TopicExpressionType `xml:"wsnt:TopicExpression,omitempty"`
-	MessageContent  *QueryExpressionType `xml:"wsnt:MessageContent,omitempty"`
+	TopicExpression *TopicExpressionType `xml:"wsnt:TopicExpression,"`
+	MessageContent  *QueryExpressionType `xml:"wsnt:MessageContent,"`
 }
 
 // EndpointReference alias
@@ -104,7 +104,7 @@ type TopicSetType struct { //wstop http://docs.oasis-open.org/wsn/t-1.xsd
 	//ExtensibleDocumented
 
 	//here can be any element
-	RuleEngine *topic.RuleEngine `json:"tns:RuleEngine,omitempty" xml:",omitempty"`
+	RuleEngine *topic.RuleEngine `json:"tns:RuleEngine," xml:","`
 }
 
 // ExtensibleDocumented struct
@@ -133,16 +133,16 @@ type MessageBody struct {
 
 type MessageDescription struct {
 	PropertyOperation xsd.AnyType `xml:"PropertyOperation,attr"`
-	Source            Source      `json:",omitempty" xml:",omitempty"`
-	Data              Data        `json:",omitempty" xml:",omitempty"`
+	Source            Source      `json:"," xml:","`
+	Data              Data        `json:"," xml:","`
 }
 
 type Source struct {
-	SimpleItem []SimpleItem `json:",omitempty" xml:",omitempty"`
+	SimpleItem []SimpleItem `json:"," xml:","`
 }
 
 type Data struct {
-	SimpleItem []SimpleItem `json:",omitempty" xml:",omitempty"`
+	SimpleItem []SimpleItem `json:"," xml:","`
 }
 
 type SimpleItem struct {
@@ -287,10 +287,10 @@ type UnsubscribeResponse struct { //http://docs.oasis-open.org/wsn/b-2.xsd
 // CreatePullPointSubscription action
 // BUG(r) Bad AbsoluteOrRelativeTimeType type
 type CreatePullPointSubscription struct {
-	XMLName                string      `xml:"tev:CreatePullPointSubscription,omitempty"`
-	Filter                 *FilterType `xml:"tev:Filter,omitempty"`
-	InitialTerminationTime *xsd.String `xml:"tev:InitialTerminationTime,omitempty"`
-	SubscriptionPolicy     *xsd.String `xml:"tev:SubscriptionPolicy,omitempty"`
+	XMLName                string      `xml:"tev:CreatePullPointSubscription,"`
+	Filter                 *FilterType `xml:"tev:Filter,"`
+	InitialTerminationTime *xsd.String `xml:"tev:InitialTerminationTime,"`
+	SubscriptionPolicy     *xsd.String `xml:"tev:SubscriptionPolicy,"`
 }
 
 // CreatePullPointSubscriptionResponse action
@@ -313,13 +313,13 @@ type GetEventProperties struct {
 
 // GetEventPropertiesResponse action
 type GetEventPropertiesResponse struct {
-	TopicNamespaceLocation          *xsd.AnyURI             `json:",omitempty" xml:",omitempty"`
-	FixedTopicSet                   *FixedTopicSet          `json:",omitempty" xml:",omitempty"`
-	TopicSet                        *TopicSet               `json:",omitempty" xml:",omitempty"`
-	TopicExpressionDialect          *TopicExpressionDialect `json:",omitempty" xml:",omitempty"`
-	MessageContentFilterDialect     *xsd.AnyURI             `json:",omitempty" xml:",omitempty"`
-	ProducerPropertiesFilterDialect *xsd.AnyURI             `json:",omitempty" xml:",omitempty"`
-	MessageContentSchemaLocation    *xsd.AnyURI             `json:",omitempty" xml:",omitempty"`
+	TopicNamespaceLocation          *xsd.AnyURI             `json:"," xml:","`
+	FixedTopicSet                   *FixedTopicSet          `json:"," xml:","`
+	TopicSet                        *TopicSet               `json:"," xml:","`
+	TopicExpressionDialect          *TopicExpressionDialect `json:"," xml:","`
+	MessageContentFilterDialect     *xsd.AnyURI             `json:"," xml:","`
+	ProducerPropertiesFilterDialect *xsd.AnyURI             `json:"," xml:","`
+	MessageContentSchemaLocation    *xsd.AnyURI             `json:"," xml:","`
 }
 
 //Port type PullPointSubscription
@@ -333,9 +333,9 @@ type PullMessages struct {
 
 // PullMessagesResponse response type
 type PullMessagesResponse struct {
-	CurrentTime         *xsd.String           `json:",omitempty" xml:",omitempty"`
-	TerminationTime     *xsd.String           `json:",omitempty" xml:",omitempty"`
-	NotificationMessage []NotificationMessage `json:",omitempty" xml:",omitempty"`
+	CurrentTime         *xsd.String           `json:"," xml:","`
+	TerminationTime     *xsd.String           `json:"," xml:","`
+	NotificationMessage []NotificationMessage `json:"," xml:","`
 }
 
 // PullMessagesFaultResponse response type
@@ -366,5 +366,5 @@ type SetSynchronizationPointResponse struct {
 
 // Notify type
 type Notify struct {
-	NotificationMessage []NotificationMessage `json:",omitempty" xml:",omitempty"`
+	NotificationMessage []NotificationMessage `json:"," xml:","`
 }

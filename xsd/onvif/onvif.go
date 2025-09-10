@@ -130,13 +130,13 @@ type VideoSource struct {
 }
 
 type VideoResolution struct {
-	Width  *xsd.Int `json:",omitempty"`
-	Height *xsd.Int `json:",omitempty"`
+	Width  *xsd.Int `json:","`
+	Height *xsd.Int `json:","`
 }
 
 type VideoResolutionRequest struct {
-	Width  *xsd.Int `xml:"onvif:Width,omitempty"`
-	Height *xsd.Int `xml:"onvif:Height,omitempty"`
+	Width  *xsd.Int `xml:"onvif:Width,"`
+	Height *xsd.Int `xml:"onvif:Height,"`
 }
 
 type ImagingSettings struct {
@@ -350,39 +350,39 @@ type Profile struct {
 	Token                       ReferenceToken `xml:"token,attr"`
 	Fixed                       bool           `xml:"fixed,attr"`
 	Name                        Name
-	VideoSourceConfiguration    *VideoSourceConfiguration    `xml:",omitempty"`
-	AudioSourceConfiguration    *AudioSourceConfiguration    `xml:",omitempty"`
-	VideoEncoderConfiguration   *VideoEncoderConfiguration   `xml:",omitempty"`
-	AudioEncoderConfiguration   *AudioEncoderConfiguration   `xml:",omitempty"`
-	VideoAnalyticsConfiguration *VideoAnalyticsConfiguration `xml:",omitempty"`
-	PTZConfiguration            *PTZConfiguration            `xml:",omitempty"`
-	MetadataConfiguration       *MetadataConfiguration       `xml:",omitempty"`
-	Extension                   *ProfileExtension            `xml:",omitempty"`
+	VideoSourceConfiguration    *VideoSourceConfiguration    `xml:","`
+	AudioSourceConfiguration    *AudioSourceConfiguration    `xml:","`
+	VideoEncoderConfiguration   *VideoEncoderConfiguration   `xml:","`
+	AudioEncoderConfiguration   *AudioEncoderConfiguration   `xml:","`
+	VideoAnalyticsConfiguration *VideoAnalyticsConfiguration `xml:","`
+	PTZConfiguration            *PTZConfiguration            `xml:","`
+	MetadataConfiguration       *MetadataConfiguration       `xml:","`
+	Extension                   *ProfileExtension            `xml:","`
 }
 
 type VideoSourceConfiguration struct {
 	ConfigurationEntity
 	ViewMode    string                             `xml:"ViewMode,attr"`
-	SourceToken *ReferenceToken                    `xml:",omitempty"`
-	Bounds      *IntRectangle                      `xml:",omitempty"`
-	Extension   *VideoSourceConfigurationExtension `xml:",omitempty"`
+	SourceToken *ReferenceToken                    `xml:","`
+	Bounds      *IntRectangle                      `xml:","`
+	Extension   *VideoSourceConfigurationExtension `xml:","`
 }
 
 type ConfigurationEntity struct {
-	Token    ReferenceToken `json:",omitempty" xml:"token,attr,omitempty"`
-	Name     Name           `json:",omitempty" xml:",omitempty"`
-	UseCount int            `json:",omitempty" xml:",omitempty"`
+	Token    ReferenceToken `json:"," xml:"token,attr,"`
+	Name     Name           `json:"," xml:","`
+	UseCount int            `json:"," xml:","`
 }
 
 type ConfigurationEntityRequest struct {
-	Token    ReferenceToken `xml:"token,attr,omitempty"`
-	Name     Name           `xml:"onvif:Name,omitempty"`
-	UseCount int            `xml:"onvif:UseCount,omitempty"`
+	Token    ReferenceToken `xml:"token,attr,"`
+	Name     Name           `xml:"onvif:Name,"`
+	UseCount int            `xml:"onvif:UseCount,"`
 }
 
 type VideoSourceConfigurationExtension struct {
-	Rotate    *Rotate                             `xml:",omitempty"`
-	Extension *VideoSourceConfigurationExtension2 `xml:",omitempty"`
+	Rotate    *Rotate                             `xml:","`
+	Extension *VideoSourceConfigurationExtension2 `xml:","`
 }
 
 type Rotate struct {
@@ -432,90 +432,90 @@ type AudioSourceConfiguration struct {
 
 type VideoEncoderConfiguration struct {
 	ConfigurationEntity
-	Encoding       *VideoEncoding          `json:",omitempty"`
-	Resolution     *VideoResolution        `json:",omitempty"`
-	Quality        float64                 `json:",omitempty"`
-	RateControl    *VideoRateControl       `json:",omitempty"`
-	MPEG4          *Mpeg4Configuration     `json:",omitempty"`
-	H264           *H264Configuration      `json:",omitempty"`
-	Multicast      *MulticastConfiguration `json:",omitempty"`
-	SessionTimeout *xsd.Duration           `json:",omitempty"`
+	Encoding       *VideoEncoding          `json:","`
+	Resolution     *VideoResolution        `json:","`
+	Quality        float64                 `json:","`
+	RateControl    *VideoRateControl       `json:","`
+	MPEG4          *Mpeg4Configuration     `json:","`
+	H264           *H264Configuration      `json:","`
+	Multicast      *MulticastConfiguration `json:","`
+	SessionTimeout *xsd.Duration           `json:","`
 }
 
 type VideoEncoderConfigurationRequest struct {
 	ConfigurationEntityRequest
-	Encoding       *VideoEncoding                 `xml:"onvif:Encoding,omitempty"`
-	Resolution     *VideoResolutionRequest        `xml:"onvif:Resolution,omitempty"`
-	Quality        *xsd.Float                     `xml:"onvif:Quality,omitempty"`
-	RateControl    *VideoRateControlRequest       `xml:"onvif:RateControl,omitempty"`
-	MPEG4          *Mpeg4ConfigurationRequest     `xml:"onvif:MPEG4,omitempty"`
-	H264           *H264ConfigurationRequest      `xml:"onvif:H264,omitempty"`
-	Multicast      *MulticastConfigurationRequest `xml:"onvif:Multicast,omitempty"`
-	SessionTimeout *xsd.Duration                  `xml:"onvif:SessionTimeout,omitempty"`
+	Encoding       *VideoEncoding                 `xml:"onvif:Encoding,"`
+	Resolution     *VideoResolutionRequest        `xml:"onvif:Resolution,"`
+	Quality        *xsd.Float                     `xml:"onvif:Quality,"`
+	RateControl    *VideoRateControlRequest       `xml:"onvif:RateControl,"`
+	MPEG4          *Mpeg4ConfigurationRequest     `xml:"onvif:MPEG4,"`
+	H264           *H264ConfigurationRequest      `xml:"onvif:H264,"`
+	Multicast      *MulticastConfigurationRequest `xml:"onvif:Multicast,"`
+	SessionTimeout *xsd.Duration                  `xml:"onvif:SessionTimeout,"`
 }
 
 type VideoEncoding xsd.String
 
 type VideoRateControl struct {
-	FrameRateLimit   *xsd.Int `json:",omitempty"`
-	EncodingInterval *xsd.Int `json:",omitempty"`
-	BitrateLimit     *xsd.Int `json:",omitempty"`
+	FrameRateLimit   *xsd.Int `json:","`
+	EncodingInterval *xsd.Int `json:","`
+	BitrateLimit     *xsd.Int `json:","`
 }
 
 type VideoRateControlRequest struct {
-	FrameRateLimit   *xsd.Int `xml:"onvif:FrameRateLimit,omitempty"`
-	EncodingInterval *xsd.Int `xml:"onvif:EncodingInterval,omitempty"`
-	BitrateLimit     *xsd.Int `xml:"onvif:BitrateLimit,omitempty"`
+	FrameRateLimit   *xsd.Int `xml:"onvif:FrameRateLimit,"`
+	EncodingInterval *xsd.Int `xml:"onvif:EncodingInterval,"`
+	BitrateLimit     *xsd.Int `xml:"onvif:BitrateLimit,"`
 }
 
 type Mpeg4Configuration struct {
-	GovLength    *xsd.Int      `json:",omitempty"`
-	Mpeg4Profile *Mpeg4Profile `json:",omitempty"`
+	GovLength    *xsd.Int      `json:","`
+	Mpeg4Profile *Mpeg4Profile `json:","`
 }
 
 type Mpeg4ConfigurationRequest struct {
-	GovLength    *xsd.Int      `xml:"onvif:GovLength,omitempty"`
-	Mpeg4Profile *Mpeg4Profile `xml:"onvif:Mpeg4Profile,omitempty"`
+	GovLength    *xsd.Int      `xml:"onvif:GovLength,"`
+	Mpeg4Profile *Mpeg4Profile `xml:"onvif:Mpeg4Profile,"`
 }
 
 type Mpeg4Profile xsd.String
 
 type H264Configuration struct {
-	GovLength   *xsd.Int     `json:",omitempty"`
-	H264Profile *H264Profile `json:",omitempty"`
+	GovLength   *xsd.Int     `json:","`
+	H264Profile *H264Profile `json:","`
 }
 
 type H264ConfigurationRequest struct {
-	GovLength   *xsd.Int     `xml:"onvif:GovLength,omitempty"`
-	H264Profile *H264Profile `xml:"onvif:H264Profile,omitempty"`
+	GovLength   *xsd.Int     `xml:"onvif:GovLength,"`
+	H264Profile *H264Profile `xml:"onvif:H264Profile,"`
 }
 
 type H264Profile xsd.String
 
 type MulticastConfiguration struct {
-	Address   *IPAddress   `json:",omitempty"`
-	Port      *xsd.Int     `json:",omitempty"`
-	TTL       *xsd.Int     `json:",omitempty"`
-	AutoStart *xsd.Boolean `json:",omitempty"`
+	Address   *IPAddress   `json:","`
+	Port      *xsd.Int     `json:","`
+	TTL       *xsd.Int     `json:","`
+	AutoStart *xsd.Boolean `json:","`
 }
 
 type MulticastConfigurationRequest struct {
-	Address   *IPAddressRequest `xml:"onvif:Address,omitempty"`
-	Port      *xsd.Int          `xml:"onvif:Port,omitempty"`
-	TTL       *xsd.Int          `xml:"onvif:TTL,omitempty"`
-	AutoStart *xsd.Boolean      `xml:"onvif:AutoStart,omitempty"`
+	Address   *IPAddressRequest `xml:"onvif:Address,"`
+	Port      *xsd.Int          `xml:"onvif:Port,"`
+	TTL       *xsd.Int          `xml:"onvif:TTL,"`
+	AutoStart *xsd.Boolean      `xml:"onvif:AutoStart,"`
 }
 
 type IPAddress struct {
-	Type        IPType      `json:",omitempty"`
-	IPv4Address IPv4Address `json:",omitempty"`
-	IPv6Address IPv6Address `json:",omitempty"`
+	Type        IPType      `json:","`
+	IPv4Address IPv4Address `json:","`
+	IPv6Address IPv6Address `json:","`
 }
 
 type IPAddressRequest struct {
-	Type        IPType      `xml:"onvif:Type,omitempty"`
-	IPv4Address IPv4Address `xml:"onvif:IPv4Address,omitempty"`
-	IPv6Address IPv6Address `xml:"onvif:IPv6Address,omitempty"`
+	Type        IPType      `xml:"onvif:Type,"`
+	IPv4Address IPv4Address `xml:"onvif:IPv4Address,"`
+	IPv6Address IPv6Address `xml:"onvif:IPv6Address,"`
 }
 
 type IPType xsd.String
@@ -544,8 +544,8 @@ type VideoAnalyticsConfiguration struct {
 }
 
 type AnalyticsEngineConfiguration struct {
-	AnalyticsModule []AnalyticsModule                      `json:",omitempty"`
-	Extension       *AnalyticsEngineConfigurationExtension `json:",omitempty"`
+	AnalyticsModule []AnalyticsModule                      `json:","`
+	Extension       *AnalyticsEngineConfigurationExtension `json:","`
 }
 
 type AnalyticsModule struct {
@@ -555,66 +555,66 @@ type AnalyticsModule struct {
 }
 
 type Parameters struct {
-	SimpleItem  []SimpleItem  `json:",omitempty"`
-	ElementItem []ElementItem `json:",omitempty"`
+	SimpleItem  []SimpleItem  `json:","`
+	ElementItem []ElementItem `json:","`
 }
 
 type AnalyticsEngineConfigurationRequest struct {
-	AnalyticsModule *ConfigRequest                         `xml:"onvif:AnalyticsEngineConfigurationRequest,omitempty"`
-	Extension       *AnalyticsEngineConfigurationExtension `xml:"onvif:Extension,omitempty"`
+	AnalyticsModule *ConfigRequest                         `xml:"onvif:AnalyticsEngineConfigurationRequest,"`
+	Extension       *AnalyticsEngineConfigurationExtension `xml:"onvif:Extension,"`
 }
 
 type Config struct {
-	Name       string     `json:",omitempty" xml:",attr"`
-	Type       *xsd.QName `json:",omitempty" xml:",attr"`
-	Parameters *ItemList  `json:",omitempty"`
+	Name       string     `json:"," xml:",attr"`
+	Type       *xsd.QName `json:"," xml:",attr"`
+	Parameters *ItemList  `json:","`
 }
 
 type ItemList struct {
-	SimpleItem  []SimpleItem       `json:",omitempty"`
-	ElementItem []ElementItem      `json:",omitempty"`
-	Extension   *ItemListExtension `json:",omitempty"`
+	SimpleItem  []SimpleItem       `json:","`
+	ElementItem []ElementItem      `json:","`
+	Extension   *ItemListExtension `json:","`
 }
 
 type SimpleItem struct {
-	Name  *xsd.String `json:",omitempty" xml:",attr"`
-	Value *xsd.String `json:",omitempty" xml:",attr"`
+	Name  *xsd.String `json:"," xml:",attr"`
+	Value *xsd.String `json:"," xml:",attr"`
 }
 
 type ElementItem struct {
-	Name  *xsd.String `json:",omitempty" xml:",attr"`
-	Value *xsd.String `json:",omitempty" xml:",attr"`
+	Name  *xsd.String `json:"," xml:",attr"`
+	Value *xsd.String `json:"," xml:",attr"`
 }
 
 type ConfigRequest struct {
-	Name       string           `xml:",attr,omitempty"`
-	Type       *xsd.QName       `xml:",attr,omitempty"`
-	Parameters *ItemListRequest `xml:"onvif:Parameters,omitempty"`
+	Name       string           `xml:",attr,"`
+	Type       *xsd.QName       `xml:",attr,"`
+	Parameters *ItemListRequest `xml:"onvif:Parameters,"`
 }
 
 type ItemListRequest struct {
-	SimpleItem  []SimpleItemRequest  `xml:"onvif:SimpleItem,omitempty"`
-	ElementItem []ElementItemRequest `xml:"onvif:ElementItem,omitempty"`
-	Extension   *ItemListExtension   `xml:"onvif:Extension,omitempty"`
+	SimpleItem  []SimpleItemRequest  `xml:"onvif:SimpleItem,"`
+	ElementItem []ElementItemRequest `xml:"onvif:ElementItem,"`
+	Extension   *ItemListExtension   `xml:"onvif:Extension,"`
 }
 
 type ElementItemRequest struct {
-	Name     string    `xml:",attr,omitempty"`
-	Polyline *Polyline `xml:"onvif:Polyline,omitempty"`
+	Name     string    `xml:",attr,"`
+	Polyline *Polyline `xml:"onvif:Polyline,"`
 }
 
 type Polyline struct {
-	Point []Point `xml:"onvif:Point,omitempty"`
+	Point []Point `xml:"onvif:Point,"`
 }
 
 type Point struct {
-	X *xsd.String `xml:"x,attr,omitempty"`
-	Y *xsd.String `xml:"onvif:y,attr,omitempty"`
+	X *xsd.String `xml:"x,attr,"`
+	Y *xsd.String `xml:"onvif:y,attr,"`
 }
 
 type SimpleItemRequest struct {
-	Name  string            `xml:",attr,omitempty"`
-	Value xsd.AnySimpleType `xml:",attr,omitempty"`
+	Name  string            `xml:",attr,"`
+	Value xsd.AnySimpleType `xml:",attr,"`
 }
 
 type ItemListExtension xsd.AnyType
@@ -622,8 +622,8 @@ type ItemListExtension xsd.AnyType
 type AnalyticsEngineConfigurationExtension xsd.AnyType
 
 type RuleEngineConfiguration struct {
-	Rule      *Config                           `json:",omitempty"`
-	Extension *RuleEngineConfigurationExtension `json:",omitempty"`
+	Rule      *Config                           `json:","`
+	Extension *RuleEngineConfigurationExtension `json:","`
 }
 
 type RuleEngineConfigurationExtension xsd.AnyType
@@ -631,53 +631,53 @@ type RuleEngineConfigurationExtension xsd.AnyType
 type PTZConfiguration struct {
 	PTZConfigurationEntity
 	Token                                  ReferenceToken             `xml:"token,attr"`
-	MoveRamp                               int                        `json:",omitempty" xml:"MoveRamp,attr,omitempty"`
-	PresetRamp                             int                        `json:",omitempty" xml:"PresetRamp,attr,omitempty"`
-	PresetTourRamp                         int                        `json:",omitempty" xml:"PresetTourRamp,attr,omitempty"`
-	NodeToken                              *ReferenceToken            `json:",omitempty" xml:"tptz:NodeToken,omitempty"`
-	DefaultAbsolutePantTiltPositionSpace   *xsd.AnyURI                `json:",omitempty" xml:",omitempty"`
-	DefaultAbsoluteZoomPositionSpace       *xsd.AnyURI                `json:",omitempty" xml:",omitempty"`
-	DefaultRelativePanTiltTranslationSpace *xsd.AnyURI                `json:",omitempty" xml:",omitempty"`
-	DefaultRelativeZoomTranslationSpace    *xsd.AnyURI                `json:",omitempty" xml:",omitempty"`
-	DefaultContinuousPanTiltVelocitySpace  *xsd.AnyURI                `json:",omitempty" xml:",omitempty"`
-	DefaultContinuousZoomVelocitySpace     *xsd.AnyURI                `json:",omitempty" xml:",omitempty"`
-	DefaultPTZSpeed                        *PTZSpeed                  `json:",omitempty" xml:",omitempty"`
-	DefaultPTZTimeout                      *xsd.Duration              `json:",omitempty" xml:",omitempty"`
-	PanTiltLimits                          *PanTiltLimits             `json:",omitempty" xml:",omitempty"`
-	ZoomLimits                             *ZoomLimits                `json:",omitempty" xml:",omitempty"`
-	Extension                              *PTZConfigurationExtension `json:",omitempty" xml:",omitempty"`
+	MoveRamp                               int                        `json:"," xml:"MoveRamp,attr,"`
+	PresetRamp                             int                        `json:"," xml:"PresetRamp,attr,"`
+	PresetTourRamp                         int                        `json:"," xml:"PresetTourRamp,attr,"`
+	NodeToken                              *ReferenceToken            `json:"," xml:"tptz:NodeToken,"`
+	DefaultAbsolutePantTiltPositionSpace   *xsd.AnyURI                `json:"," xml:","`
+	DefaultAbsoluteZoomPositionSpace       *xsd.AnyURI                `json:"," xml:","`
+	DefaultRelativePanTiltTranslationSpace *xsd.AnyURI                `json:"," xml:","`
+	DefaultRelativeZoomTranslationSpace    *xsd.AnyURI                `json:"," xml:","`
+	DefaultContinuousPanTiltVelocitySpace  *xsd.AnyURI                `json:"," xml:","`
+	DefaultContinuousZoomVelocitySpace     *xsd.AnyURI                `json:"," xml:","`
+	DefaultPTZSpeed                        *PTZSpeed                  `json:"," xml:","`
+	DefaultPTZTimeout                      *xsd.Duration              `json:"," xml:","`
+	PanTiltLimits                          *PanTiltLimits             `json:"," xml:","`
+	ZoomLimits                             *ZoomLimits                `json:"," xml:","`
+	Extension                              *PTZConfigurationExtension `json:"," xml:","`
 }
 
 type PTZConfigurationEntity struct {
-	Token    ReferenceToken `json:",omitempty" xml:"token,attr,omitempty"`
-	Name     Name           `json:",omitempty" xml:"tptz:Name,omitempty"`
-	UseCount int            `json:",omitempty" xml:"tptz:UseCount,omitempty"`
+	Token    ReferenceToken `json:"," xml:"token,attr,"`
+	Name     Name           `json:"," xml:"tptz:Name,"`
+	UseCount int            `json:"," xml:"tptz:UseCount,"`
 }
 
 type PTZSpeed struct {
-	PanTilt *Vector2D `json:",omitempty" xml:"onvif:PanTilt,omitempty"`
-	Zoom    *Vector1D `json:",omitempty" xml:"onvif:Zoom,omitempty"`
+	PanTilt *Vector2D `json:"," xml:"onvif:PanTilt"`
+	Zoom    *Vector1D `json:"," xml:"onvif:Zoom"`
 }
 
 type Vector2D struct {
-	X     float64     `xml:"x,attr,omitempty"`
-	Y     float64     `xml:"y,attr,omitempty"`
-	Space *xsd.AnyURI `xml:"space,attr,omitempty"`
+	X     float64     `xml:"x,attr"`
+	Y     float64     `xml:"y,attr"`
+	Space *xsd.AnyURI `xml:"space,attr,"`
 }
 
 type Vector1D struct {
-	X     float64     `xml:"x,attr,omitempty"`
-	Space *xsd.AnyURI `xml:"space,attr,omitempty"`
+	X     float64     `xml:"x,attr"`
+	Space *xsd.AnyURI `xml:"space,attr,"`
 }
 
 type PanTiltLimits struct {
-	Range *Space2DDescription `xml:"Range,omitempty"`
+	Range *Space2DDescription `xml:"Range,"`
 }
 
 type Space2DDescription struct {
-	URI    *xsd.AnyURI `xml:"URI,omitempty"`
-	XRange *FloatRange `xml:"XRange,omitempty"`
-	YRange *FloatRange `xml:"YRange,omitempty"`
+	URI    *xsd.AnyURI `xml:"URI,"`
+	XRange *FloatRange `xml:"XRange,"`
+	YRange *FloatRange `xml:"YRange,"`
 }
 
 type ZoomLimits struct {
@@ -690,8 +690,8 @@ type Space1DDescription struct {
 }
 
 type PTZConfigurationExtension struct {
-	PTControlDirection *PTControlDirection         `xml:"PTControlDirection,omitempty"`
-	Extension          *PTZConfigurationExtension2 `xml:"Extension,omitempty"`
+	PTControlDirection *PTControlDirection         `xml:"PTControlDirection,"`
+	Extension          *PTZConfigurationExtension2 `xml:"Extension,"`
 }
 
 type PTControlDirection struct {
@@ -718,26 +718,26 @@ type PTZConfigurationExtension2 xsd.AnyType
 
 type MetadataConfiguration struct {
 	ConfigurationEntity
-	CompressionType              string                          `json:",omitempty" xml:",attr,omitempty"`
-	PTZStatus                    *PTZFilter                      `json:",omitempty" xml:",omitempty"`
-	Events                       *EventSubscription              `json:",omitempty" xml:",omitempty"`
-	Analytics                    *xsd.Boolean                    `json:",omitempty" xml:",omitempty"`
-	Multicast                    *MulticastConfiguration         `json:",omitempty" xml:",omitempty"`
-	SessionTimeout               *xsd.Duration                   `json:",omitempty" xml:",omitempty"`
-	AnalyticsEngineConfiguration *AnalyticsEngineConfiguration   `json:",omitempty" xml:",omitempty"`
-	Extension                    *MetadataConfigurationExtension `json:",omitempty" xml:",omitempty"`
+	CompressionType              string                          `json:"," xml:",attr,"`
+	PTZStatus                    *PTZFilter                      `json:"," xml:","`
+	Events                       *EventSubscription              `json:"," xml:","`
+	Analytics                    *xsd.Boolean                    `json:"," xml:","`
+	Multicast                    *MulticastConfiguration         `json:"," xml:","`
+	SessionTimeout               *xsd.Duration                   `json:"," xml:","`
+	AnalyticsEngineConfiguration *AnalyticsEngineConfiguration   `json:"," xml:","`
+	Extension                    *MetadataConfigurationExtension `json:"," xml:","`
 }
 
 type MetadataConfigurationRequest struct {
 	ConfigurationEntity
-	CompressionType              string                               `xml:"onvif:CompressionType,attr,omitempty"`
-	PTZStatus                    *PTZFilterRequest                    `xml:"onvif:PTZStatus,omitempty"`
-	Events                       *EventSubscriptionRequest            `xml:"onvif:Events,omitempty"`
-	Analytics                    *xsd.Boolean                         `xml:"onvif:Analytics,omitempty"`
-	Multicast                    *MulticastConfigurationRequest       `xml:"onvif:Multicast,omitempty"`
-	SessionTimeout               *xsd.Duration                        `xml:"onvif:CompressionType,omitempty"`
-	AnalyticsEngineConfiguration *AnalyticsEngineConfigurationRequest `xml:"onvif:AnalyticsEngineConfiguration,omitempty"`
-	Extension                    *MetadataConfigurationExtension      `xml:"onvif:Extension,omitempty"`
+	CompressionType              string                               `xml:"onvif:CompressionType,attr,"`
+	PTZStatus                    *PTZFilterRequest                    `xml:"onvif:PTZStatus,"`
+	Events                       *EventSubscriptionRequest            `xml:"onvif:Events,"`
+	Analytics                    *xsd.Boolean                         `xml:"onvif:Analytics,"`
+	Multicast                    *MulticastConfigurationRequest       `xml:"onvif:Multicast,"`
+	SessionTimeout               *xsd.Duration                        `xml:"onvif:CompressionType,"`
+	AnalyticsEngineConfiguration *AnalyticsEngineConfigurationRequest `xml:"onvif:AnalyticsEngineConfiguration,"`
+	Extension                    *MetadataConfigurationExtension      `xml:"onvif:Extension,"`
 }
 
 type PTZFilter struct {
@@ -746,18 +746,18 @@ type PTZFilter struct {
 }
 
 type PTZFilterRequest struct {
-	Status   bool `xml:"onvif:Status,omitempty"`
-	Position bool `xml:"onvif:Position,omitempty"`
+	Status   bool `xml:"onvif:Status,"`
+	Position bool `xml:"onvif:Position,"`
 }
 
 type EventSubscription struct {
-	Filter             *FilterType         `json:",omitempty"`
-	SubscriptionPolicy *SubscriptionPolicy `json:",omitempty"`
+	Filter             *FilterType         `json:","`
+	SubscriptionPolicy *SubscriptionPolicy `json:","`
 }
 
 type EventSubscriptionRequest struct {
-	Filter             FilterType         `xml:"onvif:Filter,omitempty"`
-	SubscriptionPolicy SubscriptionPolicy `xml:"onvif:SubscriptionPolicy,omitempty"`
+	Filter             FilterType         `xml:"onvif:Filter,"`
+	SubscriptionPolicy SubscriptionPolicy `xml:"onvif:SubscriptionPolicy,"`
 }
 
 type FilterType xsd.AnyType
@@ -767,9 +767,9 @@ type SubscriptionPolicy xsd.AnyType
 type MetadataConfigurationExtension xsd.AnyType
 
 type ProfileExtension struct {
-	AudioOutputConfiguration  *AudioOutputConfiguration  `xml:",omitempty"`
-	AudioDecoderConfiguration *AudioDecoderConfiguration `xml:",omitempty"`
-	Extension                 *ProfileExtension2         `xml:",omitempty"`
+	AudioOutputConfiguration  *AudioOutputConfiguration  `xml:","`
+	AudioDecoderConfiguration *AudioDecoderConfiguration `xml:","`
+	Extension                 *ProfileExtension2         `xml:","`
 }
 
 type AudioOutputConfiguration struct {
@@ -814,11 +814,11 @@ type VideoSourceConfigurationOptionsExtension2 struct {
 }
 
 type VideoEncoderConfigurationOptions struct {
-	QualityRange *IntRange                     `json:",omitempty"`
-	JPEG         *JpegOptions                  `json:",omitempty"`
-	MPEG4        *Mpeg4Options                 `json:",omitempty"`
-	H264         *H264Options                  `json:",omitempty"`
-	Extension    *VideoEncoderOptionsExtension `json:",omitempty"`
+	QualityRange *IntRange                     `json:","`
+	JPEG         *JpegOptions                  `json:","`
+	MPEG4        *Mpeg4Options                 `json:","`
+	H264         *H264Options                  `json:","`
+	Extension    *VideoEncoderOptionsExtension `json:","`
 }
 
 type JpegOptions struct {
@@ -844,10 +844,10 @@ type H264Options struct {
 }
 
 type VideoEncoderOptionsExtension struct {
-	JPEG      *JpegOptions2                  `json:",omitempty"`
-	MPEG4     *Mpeg4Options2                 `json:",omitempty"`
-	H264      *H264Options2                  `json:",omitempty"`
-	Extension *VideoEncoderOptionsExtension2 `json:",omitempty"`
+	JPEG      *JpegOptions2                  `json:","`
+	MPEG4     *Mpeg4Options2                 `json:","`
+	H264      *H264Options2                  `json:","`
+	Extension *VideoEncoderOptionsExtension2 `json:","`
 }
 
 type JpegOptions2 struct {
@@ -885,8 +885,8 @@ type AudioEncoderConfigurationOption struct {
 }
 
 type MetadataConfigurationOptions struct {
-	PTZStatusFilterOptions *PTZStatusFilterOptions                `json:",omitempty" xml:",omitempty"`
-	Extension              *MetadataConfigurationOptionsExtension `json:",omitempty" xml:",omitempty"`
+	PTZStatusFilterOptions *PTZStatusFilterOptions                `json:"," xml:","`
+	Extension              *MetadataConfigurationOptionsExtension `json:"," xml:","`
 }
 
 type PTZStatusFilterOptions struct {
@@ -894,14 +894,14 @@ type PTZStatusFilterOptions struct {
 	ZoomStatusSupported      bool
 	PanTiltPositionSupported bool
 	ZoomPositionSupported    bool
-	Extension                *PTZStatusFilterOptionsExtension `json:",omitempty" xml:",omitempty"`
+	Extension                *PTZStatusFilterOptionsExtension `json:"," xml:","`
 }
 
 type PTZStatusFilterOptionsExtension xsd.AnyType
 
 type MetadataConfigurationOptionsExtension struct {
-	CompressionType string                                  `json:",omitempty" xml:",omitempty"`
-	Extension       *MetadataConfigurationOptionsExtension2 `json:",omitempty" xml:",omitempty"`
+	CompressionType string                                  `json:"," xml:","`
+	Extension       *MetadataConfigurationOptionsExtension2 `json:"," xml:","`
 }
 
 type MetadataConfigurationOptionsExtension2 xsd.AnyType
@@ -937,15 +937,15 @@ type G726DecOptions struct {
 type AudioDecoderConfigurationOptionsExtension xsd.AnyType
 
 type StreamSetup struct {
-	Stream    *StreamType `xml:"onvif:Stream,omitempty"`
-	Transport *Transport  `xml:"onvif:Transport,omitempty"`
+	Stream    *StreamType `xml:"onvif:Stream,"`
+	Transport *Transport  `xml:"onvif:Transport,"`
 }
 
 type StreamType xsd.String
 
 type Transport struct {
-	Protocol *TransportProtocol `xml:"onvif:Protocol,omitempty"`
-	Tunnel   *Transport         `xml:"onvif:Tunnel,omitempty"`
+	Protocol *TransportProtocol `xml:"onvif:Protocol,"`
+	Tunnel   *Transport         `xml:"onvif:Tunnel,"`
 }
 
 // enum
@@ -1049,14 +1049,14 @@ type OSDConfigurationOptionsExtension xsd.AnyType
 
 type PTZNode struct {
 	DeviceEntity
-	FixedHomePosition      *xsd.Boolean      `json:",omitempty" xml:",attr,omitempty"`
-	GeoMove                *xsd.Boolean      `json:",omitempty" xml:",attr,omitempty"`
-	Name                   *Name             `json:",omitempty" xml:",omitempty"`
-	SupportedPTZSpaces     *PTZSpaces        `json:",omitempty" xml:",omitempty"`
-	MaximumNumberOfPresets int               `json:",omitempty" xml:",omitempty"`
-	HomeSupported          *xsd.Boolean      `json:",omitempty" xml:",omitempty"`
-	AuxiliaryCommands      *AuxiliaryData    `json:",omitempty" xml:",omitempty"`
-	Extension              *PTZNodeExtension `json:",omitempty" xml:",omitempty"`
+	FixedHomePosition      *xsd.Boolean      `json:"," xml:",attr,"`
+	GeoMove                *xsd.Boolean      `json:"," xml:",attr,"`
+	Name                   *Name             `json:"," xml:","`
+	SupportedPTZSpaces     *PTZSpaces        `json:"," xml:","`
+	MaximumNumberOfPresets int               `json:"," xml:","`
+	HomeSupported          *xsd.Boolean      `json:"," xml:","`
+	AuxiliaryCommands      *AuxiliaryData    `json:"," xml:","`
+	Extension              *PTZNodeExtension `json:"," xml:","`
 }
 
 type PTZSpaces struct {
@@ -1093,11 +1093,11 @@ type PTZPresetTourSupportedExtension xsd.AnyType
 type PTZNodeExtension2 xsd.AnyType
 
 type PTZConfigurationOptions struct {
-	PTZRamps           *IntAttrList               `json:",omitempty" xml:",attr,omitempty"`
-	Spaces             *PTZSpaces                 `json:",omitempty" xml:",omitempty"`
-	PTZTimeout         *DurationRange             `json:",omitempty" xml:",omitempty"`
-	PTControlDirection *PTControlDirectionOptions `json:",omitempty" xml:",omitempty"`
-	Extension          *PTZConfigurationOptions2  `json:",omitempty" xml:",omitempty"`
+	PTZRamps           *IntAttrList               `json:"," xml:",attr,"`
+	Spaces             *PTZSpaces                 `json:"," xml:","`
+	PTZTimeout         *DurationRange             `json:"," xml:","`
+	PTControlDirection *PTControlDirectionOptions `json:"," xml:","`
+	Extension          *PTZConfigurationOptions2  `json:"," xml:","`
 }
 
 type IntAttrList []int
@@ -1138,20 +1138,20 @@ type PTZPreset struct {
 }
 
 type PTZVector struct {
-	PanTilt *Vector2D `json:",omitempty" xml:"PanTilt,omitempty"`
-	Zoom    *Vector1D `json:",omitempty" xml:"Zoom,omitempty"`
+	PanTilt *Vector2D `json:"," xml:"PanTilt,"`
+	Zoom    *Vector1D `json:"," xml:"Zoom,"`
 }
 
 type PTZStatus struct {
-	Position   PTZVector     `json:",omitempty" xml:",omitempty"`
-	MoveStatus PTZMoveStatus `json:",omitempty" xml:",omitempty"`
-	Error      string        `json:",omitempty" xml:",omitempty"`
-	UtcTime    string        `json:",omitempty" xml:",omitempty"`
+	Position   PTZVector     `json:"," xml:","`
+	MoveStatus PTZMoveStatus `json:"," xml:","`
+	Error      string        `json:"," xml:","`
+	UtcTime    string        `json:"," xml:","`
 }
 
 type PTZMoveStatus struct {
-	PanTilt string `json:",omitempty" xml:",omitempty"`
-	Zoom    string `json:",omitempty" xml:",omitempty"`
+	PanTilt string `json:"," xml:","`
+	Zoom    string `json:"," xml:","`
 }
 
 type MoveStatus struct {
@@ -1326,17 +1326,17 @@ type RemoteUser struct {
 }
 
 type User struct {
-	Username  string         `json:",omitempty" xml:",omitempty"`
-	Password  string         `json:",omitempty" xml:",omitempty"`
-	UserLevel *UserLevel     `json:",omitempty" xml:",omitempty"`
-	Extension *UserExtension `json:",omitempty" xml:",omitempty"`
+	Username  string         `json:"," xml:","`
+	Password  string         `json:"," xml:","`
+	UserLevel *UserLevel     `json:"," xml:","`
+	Extension *UserExtension `json:"," xml:","`
 }
 
 type UserRequest struct {
-	Username  string         `xml:"onvif:Username,omitempty"`
-	Password  string         `xml:"onvif:Password,omitempty"`
-	UserLevel *UserLevel     `xml:"onvif:UserLevel,omitempty"`
-	Extension *UserExtension `xml:"onvif:Extension,omitempty"`
+	Username  string         `xml:"onvif:Username,"`
+	Password  string         `xml:"onvif:Password,"`
+	UserLevel *UserLevel     `xml:"onvif:UserLevel,"`
+	Extension *UserExtension `xml:"onvif:Extension,"`
 }
 
 type UserLevel xsd.String
@@ -1553,19 +1553,19 @@ type AnalyticsDeviceExtension xsd.AnyType
 type CapabilitiesExtension2 xsd.AnyType
 
 type HostnameInformation struct {
-	FromDHCP  *xsd.Boolean                  `json:"FromDHCP,omitempty"`
-	Name      *xsd.Token                    `json:"Name,omitempty"`
-	Extension *HostnameInformationExtension `json:"Extension,omitempty"`
+	FromDHCP  *xsd.Boolean                  `json:"FromDHCP,"`
+	Name      *xsd.Token                    `json:"Name,"`
+	Extension *HostnameInformationExtension `json:"Extension,"`
 }
 
 type HostnameInformationExtension xsd.AnyType
 
 type DNSInformation struct {
-	FromDHCP     *xsd.Boolean             `json:"FromDHCP,omitempty"`
-	SearchDomain *xsd.Token               `json:"SearchDomain,omitempty"`
-	DNSFromDHCP  *IPAddress               `json:"DNSFromDHCP,omitempty"`
-	DNSManual    *IPAddress               `json:"DNSManual,omitempty"`
-	Extension    *DNSInformationExtension `json:"Extension,omitempty"`
+	FromDHCP     *xsd.Boolean             `json:"FromDHCP,"`
+	SearchDomain *xsd.Token               `json:"SearchDomain,"`
+	DNSFromDHCP  *IPAddress               `json:"DNSFromDHCP,"`
+	DNSManual    *IPAddress               `json:"DNSManual,"`
+	Extension    *DNSInformationExtension `json:"Extension,"`
 }
 
 type DNSInformationExtension xsd.AnyType
@@ -1593,18 +1593,18 @@ type DynamicDNSInformationExtension xsd.AnyType
 
 type NetworkInterface struct {
 	DeviceEntity
-	Enabled   *xsd.Boolean               `json:",omitempty"`
-	Info      *NetworkInterfaceInfo      `json:",omitempty"`
-	Link      *NetworkInterfaceLink      `json:",omitempty"`
-	IPv4      *IPv4NetworkInterface      `json:",omitempty"`
-	IPv6      *IPv6NetworkInterface      `json:",omitempty"`
-	Extension *NetworkInterfaceExtension `json:",omitempty"`
+	Enabled   *xsd.Boolean               `json:","`
+	Info      *NetworkInterfaceInfo      `json:","`
+	Link      *NetworkInterfaceLink      `json:","`
+	IPv4      *IPv4NetworkInterface      `json:","`
+	IPv6      *IPv6NetworkInterface      `json:","`
+	Extension *NetworkInterfaceExtension `json:","`
 }
 
 type NetworkInterfaceInfo struct {
-	Name      xsd.String `json:"Name,omitempty"`
-	HwAddress HwAddress  `json:"HwAddress,omitempty"`
-	MTU       xsd.Int    `json:"MTU,omitempty"`
+	Name      xsd.String `json:"Name,"`
+	HwAddress HwAddress  `json:"HwAddress,"`
+	MTU       xsd.Int    `json:"MTU,"`
 }
 
 type HwAddress xsd.Token
@@ -1612,15 +1612,15 @@ type HwAddress xsd.Token
 type NetworkInterfaceLink struct {
 	AdminSettings NetworkInterfaceConnectionSetting
 	OperSettings  NetworkInterfaceConnectionSetting
-	InterfaceType *IANA_IfTypes `xml:"IANA-IfTypes,omitempty" json:"IANA-IfTypes,omitempty"`
+	InterfaceType *IANA_IfTypes `xml:"IANA-IfTypes," json:"IANA-IfTypes,"`
 }
 
 type IANA_IfTypes xsd.Int
 
 type NetworkInterfaceConnectionSetting struct {
-	AutoNegotiation *xsd.Boolean `xml:"onvif:AutoNegotiation,omitempty" json:"AutoNegotiation,omitempty"`
-	Speed           *xsd.Int     `xml:"onvif:Speed,omitempty" json:"Speed,omitempty"`
-	Duplex          *Duplex      `xml:"onvif:Duplex,omitempty" json:"Duplex,omitempty"`
+	AutoNegotiation *xsd.Boolean `xml:"onvif:AutoNegotiation," json:"AutoNegotiation,"`
+	Speed           *xsd.Int     `xml:"onvif:Speed," json:"Speed,"`
+	Duplex          *Duplex      `xml:"onvif:Duplex," json:"Duplex,"`
 }
 
 // TODO: enum
@@ -1628,35 +1628,35 @@ type Duplex xsd.String
 
 type NetworkInterfaceExtension struct {
 	InterfaceType IANA_IfTypes
-	Dot3          *Dot3Configuration  `xml:"Dot3,omitempty" json:"Dot3,omitempty"`
-	Dot11         *Dot11Configuration `xml:"Dot11,omitempty" json:"Dot11,omitempty"`
+	Dot3          *Dot3Configuration  `xml:"Dot3," json:"Dot3,"`
+	Dot11         *Dot11Configuration `xml:"Dot11," json:"Dot11,"`
 	Extension     NetworkInterfaceExtension2
 }
 
 type NetworkInterfaceExtension2 xsd.AnyType
 
 type Dot11Configuration struct {
-	SSID     Dot11SSIDType                  `xml:"SSID,omitempty" json:"SSID,omitempty"`
-	Mode     Dot11StationMode               `xml:"Mode,omitempty" json:"Mode,omitempty"`
-	Alias    Name                           `xml:"Alias,omitempty" json:"Alias,omitempty"`
-	Priority NetworkInterfaceConfigPriority `xml:"Priority,omitempty" json:"Priority,omitempty"`
-	Security Dot11SecurityConfiguration     `xml:"Security,omitempty" json:"Security,omitempty"`
+	SSID     Dot11SSIDType                  `xml:"SSID," json:"SSID,"`
+	Mode     Dot11StationMode               `xml:"Mode," json:"Mode,"`
+	Alias    Name                           `xml:"Alias," json:"Alias,"`
+	Priority NetworkInterfaceConfigPriority `xml:"Priority," json:"Priority,"`
+	Security Dot11SecurityConfiguration     `xml:"Security," json:"Security,"`
 }
 
 type Dot11SecurityConfiguration struct {
-	Mode      Dot11SecurityMode                   `xml:"Mode,omitempty" json:"Mode,omitempty"`
-	Algorithm Dot11Cipher                         `xml:"Algorithm,omitempty" json:"Algorithm,omitempty"`
-	PSK       Dot11PSKSet                         `xml:"PSK,omitempty" json:"PSK,omitempty"`
-	Dot1X     ReferenceToken                      `xml:"Dot1X,omitempty" json:"Dot1X,omitempty"`
-	Extension Dot11SecurityConfigurationExtension `xml:"Extension,omitempty" json:"Extension,omitempty"`
+	Mode      Dot11SecurityMode                   `xml:"Mode," json:"Mode,"`
+	Algorithm Dot11Cipher                         `xml:"Algorithm," json:"Algorithm,"`
+	PSK       Dot11PSKSet                         `xml:"PSK," json:"PSK,"`
+	Dot1X     ReferenceToken                      `xml:"Dot1X," json:"Dot1X,"`
+	Extension Dot11SecurityConfigurationExtension `xml:"Extension," json:"Extension,"`
 }
 
 type Dot11SecurityConfigurationExtension xsd.AnyType
 
 type Dot11PSKSet struct {
-	Key        Dot11PSK             `xml:"Key,omitempty" json:"Key,omitempty"`
-	Passphrase Dot11PSKPassphrase   `xml:"Passphrase,omitempty" json:"Passphrase,omitempty"`
-	Extension  Dot11PSKSetExtension `xml:"Extension,omitempty" json:"Extension,omitempty"`
+	Key        Dot11PSK             `xml:"Key," json:"Key,"`
+	Passphrase Dot11PSKPassphrase   `xml:"Passphrase," json:"Passphrase,"`
+	Extension  Dot11PSKSetExtension `xml:"Extension," json:"Extension,"`
 }
 
 type Dot11PSKSetExtension xsd.AnyType
@@ -1700,73 +1700,73 @@ type IPv6Configuration struct {
 type IPv6ConfigurationExtension xsd.AnyType
 
 type PrefixedIPv6Address struct {
-	Address      IPv6Address `xml:"Address,omitempty" json:"Address,omitempty"`
-	PrefixLength xsd.Int     `xml:"PrefixLength,omitempty" json:"PrefixLength,omitempty"`
+	Address      IPv6Address `xml:"Address," json:"Address,"`
+	PrefixLength xsd.Int     `xml:"PrefixLength," json:"PrefixLength,"`
 }
 
 // TODO: enumeration
 type IPv6DHCPConfiguration xsd.String
 
 type IPv4NetworkInterface struct {
-	Enabled *xsd.Boolean       `json:"Enabled,omitempty"`
-	Config  *IPv4Configuration `json:"Config,omitempty"`
+	Enabled *xsd.Boolean       `json:"Enabled,"`
+	Config  *IPv4Configuration `json:"Config,"`
 }
 
 type IPv4Configuration struct {
-	Manual    *PrefixedIPv4Address `json:"Manual,omitempty"`
-	LinkLocal *PrefixedIPv4Address `json:"LinkLocal,omitempty"`
-	FromDHCP  *PrefixedIPv4Address `json:"FromDHCP,omitempty"`
-	DHCP      *xsd.Boolean         `json:"DHCP,omitempty"`
+	Manual    *PrefixedIPv4Address `json:"Manual,"`
+	LinkLocal *PrefixedIPv4Address `json:"LinkLocal,"`
+	FromDHCP  *PrefixedIPv4Address `json:"FromDHCP,"`
+	DHCP      *xsd.Boolean         `json:"DHCP,"`
 }
 
 // optional, unbounded
 type PrefixedIPv4Address struct {
-	Address      IPv4Address `xml:"Address" json:"Address,omitempty"`
-	PrefixLength xsd.Int     `xml:"PrefixLength" json:"PrefixLength,omitempty"`
+	Address      IPv4Address `xml:"Address" json:"Address,"`
+	PrefixLength xsd.Int     `xml:"PrefixLength" json:"PrefixLength,"`
 }
 
 type NetworkInterfaceSetConfiguration struct {
-	Enabled   *xsd.Boolean                               `xml:"onvif:Enabled,omitempty"`
-	Link      *NetworkInterfaceConnectionSetting         `xml:"onvif:Link,omitempty"`
-	MTU       *xsd.Int                                   `xml:"onvif:MTU,omitempty"`
-	IPv4      *IPv4NetworkInterfaceSetConfiguration      `xml:"onvif:IPv4,omitempty"`
-	IPv6      *IPv6NetworkInterfaceSetConfiguration      `xml:"onvif:IPv6,omitempty"`
-	Extension *NetworkInterfaceSetConfigurationExtension `xml:"onvif:Extension,omitempty"`
+	Enabled   *xsd.Boolean                               `xml:"onvif:Enabled,"`
+	Link      *NetworkInterfaceConnectionSetting         `xml:"onvif:Link,"`
+	MTU       *xsd.Int                                   `xml:"onvif:MTU,"`
+	IPv4      *IPv4NetworkInterfaceSetConfiguration      `xml:"onvif:IPv4,"`
+	IPv6      *IPv6NetworkInterfaceSetConfiguration      `xml:"onvif:IPv6,"`
+	Extension *NetworkInterfaceSetConfigurationExtension `xml:"onvif:Extension,"`
 }
 
 type NetworkInterfaceSetConfigurationExtension struct {
-	Dot3      Dot3Configuration                          `xml:"onvif:Dot3,omitempty"`
-	Dot11     Dot11Configuration                         `xml:"onvif:Dot11,omitempty"`
-	Extension NetworkInterfaceSetConfigurationExtension2 `xml:"onvif:Extension,omitempty"`
+	Dot3      Dot3Configuration                          `xml:"onvif:Dot3,"`
+	Dot11     Dot11Configuration                         `xml:"onvif:Dot11,"`
+	Extension NetworkInterfaceSetConfigurationExtension2 `xml:"onvif:Extension,"`
 }
 
 type NetworkInterfaceSetConfigurationExtension2 xsd.AnyType
 
 type IPv6NetworkInterfaceSetConfiguration struct {
-	Enabled            *xsd.Boolean           `xml:"onvif:Enabled,omitempty" json:",omitempty"`
-	AcceptRouterAdvert *xsd.Boolean           `xml:"onvif:AcceptRouterAdvert,omitempty" json:",omitempty"`
-	Manual             *PrefixedIPv6Address   `xml:"onvif:Manual,omitempty" json:",omitempty"`
-	DHCP               *IPv6DHCPConfiguration `xml:"onvif:DHCP,omitempty" json:",omitempty"`
+	Enabled            *xsd.Boolean           `xml:"onvif:Enabled," json:","`
+	AcceptRouterAdvert *xsd.Boolean           `xml:"onvif:AcceptRouterAdvert," json:","`
+	Manual             *PrefixedIPv6Address   `xml:"onvif:Manual," json:","`
+	DHCP               *IPv6DHCPConfiguration `xml:"onvif:DHCP," json:","`
 }
 
 type IPv4NetworkInterfaceSetConfiguration struct {
-	Enabled *xsd.Boolean         `xml:"onvif:Enabled,omitempty"`
-	Manual  *PrefixedIPv4Address `xml:"onvif:Manual,omitempty"`
-	DHCP    *xsd.Boolean         `xml:"onvif:DHCP,omitempty"`
+	Enabled *xsd.Boolean         `xml:"onvif:Enabled,"`
+	Manual  *PrefixedIPv4Address `xml:"onvif:Manual,"`
+	DHCP    *xsd.Boolean         `xml:"onvif:DHCP,"`
 }
 
 type NetworkProtocolResponse struct {
-	Name      *NetworkProtocolType      `json:",omitempty"`
-	Enabled   *xsd.Boolean              `json:",omitempty"`
-	Port      *xsd.Int                  `json:",omitempty"`
-	Extension *NetworkProtocolExtension `json:",omitempty"`
+	Name      *NetworkProtocolType      `json:","`
+	Enabled   *xsd.Boolean              `json:","`
+	Port      *xsd.Int                  `json:","`
+	Extension *NetworkProtocolExtension `json:","`
 }
 
 type NetworkProtocolRequest struct {
-	Name      *NetworkProtocolType      `xml:"onvif:Name,omitempty"`
-	Enabled   *xsd.Boolean              `xml:"onvif:Enabled,omitempty"`
-	Port      *xsd.Int                  `xml:"onvif:Port,omitempty"`
-	Extension *NetworkProtocolExtension `xml:"onvif:Extension,omitempty"`
+	Name      *NetworkProtocolType      `xml:"onvif:Name,"`
+	Enabled   *xsd.Boolean              `xml:"onvif:Enabled,"`
+	Port      *xsd.Int                  `xml:"onvif:Port,"`
+	Extension *NetworkProtocolExtension `xml:"onvif:Extension,"`
 }
 
 type NetworkProtocolExtension xsd.AnyType
@@ -1775,8 +1775,8 @@ type NetworkProtocolExtension xsd.AnyType
 type NetworkProtocolType xsd.String
 
 type NetworkGateway struct {
-	IPv4Address *IPv4Address `json:"IPv4Address,omitempty"`
-	IPv6Address *IPv6Address `json:"IPv6Address,omitempty"`
+	IPv4Address *IPv4Address `json:"IPv4Address,"`
+	IPv6Address *IPv6Address `json:"IPv6Address,"`
 }
 
 type NetworkZeroConfiguration struct {
@@ -1794,10 +1794,10 @@ type NetworkZeroConfigurationExtension struct {
 type NetworkZeroConfigurationExtension2 xsd.AnyType
 
 type IPAddressFilter struct {
-	Type        IPAddressFilterType      `xml:"Type,omitempty"`
-	IPv4Address PrefixedIPv4Address      `xml:"IPv4Address,omitempty"`
-	IPv6Address PrefixedIPv6Address      `xml:"IPv6Address,omitempty"`
-	Extension   IPAddressFilterExtension `xml:"Extension,omitempty"`
+	Type        IPAddressFilterType      `xml:"Type,"`
+	IPv4Address PrefixedIPv4Address      `xml:"IPv4Address,"`
+	IPv6Address PrefixedIPv6Address      `xml:"IPv6Address,"`
+	Extension   IPAddressFilterExtension `xml:"Extension,"`
 }
 
 type IPAddressFilterExtension xsd.AnyType
@@ -1877,25 +1877,25 @@ type CertificateUsage struct {
 type Dot1XConfiguration struct {
 	Dot1XConfigurationToken ReferenceToken              `xml:"Dot1XConfigurationToken"`
 	Identity                xsd.String                  `xml:"Identity"`
-	AnonymousID             xsd.String                  `xml:"AnonymousID,omitempty"`
+	AnonymousID             xsd.String                  `xml:"AnonymousID,"`
 	EAPMethod               xsd.Int                     `xml:"EAPMethod"`
-	CACertificateID         xsd.Token                   `xml:"CACertificateID,omitempty"`
-	EAPMethodConfiguration  EAPMethodConfiguration      `xml:"EAPMethodConfiguration,omitempty"`
-	Extension               Dot1XConfigurationExtension `xml:"Extension,omitempty"`
+	CACertificateID         xsd.Token                   `xml:"CACertificateID,"`
+	EAPMethodConfiguration  EAPMethodConfiguration      `xml:"EAPMethodConfiguration,"`
+	Extension               Dot1XConfigurationExtension `xml:"Extension,"`
 }
 
 type Dot1XConfigurationExtension xsd.AnyType
 
 type EAPMethodConfiguration struct {
-	TLSConfiguration TLSConfiguration   `xml:"TLSConfiguration,omitempty"`
-	Password         xsd.String         `xml:"Password,omitempty"`
-	Extension        EapMethodExtension `xml:"Extension,omitempty"`
+	TLSConfiguration TLSConfiguration   `xml:"TLSConfiguration,"`
+	Password         xsd.String         `xml:"Password,"`
+	Extension        EapMethodExtension `xml:"Extension,"`
 }
 
 type EapMethodExtension xsd.AnyType
 
 type TLSConfiguration struct {
-	CertificateID xsd.Token `xml:"CertificateID,omitempty"`
+	CertificateID xsd.Token `xml:"CertificateID,"`
 }
 
 type Dot11Capabilities struct {
@@ -2011,18 +2011,18 @@ type Date struct {
 }
 
 type DateTimeRequest struct {
-	Time *TimeRequest `xml:"onvif:Time,omitempty"`
-	Date *DateRequest `xml:"onvif:Date,omitempty"`
+	Time *TimeRequest `xml:"onvif:Time,"`
+	Date *DateRequest `xml:"onvif:Date,"`
 }
 
 type TimeRequest struct {
-	Hour   *xsd.Int `xml:"onvif:Hour,omitempty"`
-	Minute *xsd.Int `xml:"onvif:Minute,omitempty"`
-	Second *xsd.Int `xml:"onvif:Second,omitempty"`
+	Hour   *xsd.Int `xml:"onvif:Hour,"`
+	Minute *xsd.Int `xml:"onvif:Minute,"`
+	Second *xsd.Int `xml:"onvif:Second,"`
 }
 
 type DateRequest struct {
-	Year  *xsd.Int `xml:"onvif:Year,omitempty"`
-	Month *xsd.Int `xml:"onvif:Month,omitempty"`
-	Day   *xsd.Int `xml:"onvif:Day,omitempty"`
+	Year  *xsd.Int `xml:"onvif:Year,"`
+	Month *xsd.Int `xml:"onvif:Month,"`
+	Day   *xsd.Int `xml:"onvif:Day,"`
 }

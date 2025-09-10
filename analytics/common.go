@@ -3,45 +3,45 @@ package analytics
 import "github.com/nguyencobap/onvif/xsd"
 
 type Parameters struct {
-	SimpleItemDescription  []SimpleItemDescription  `json:",omitempty"`
-	ElementItemDescription []ElementItemDescription `json:",omitempty"`
-	Extension              *xsd.String              `json:",omitempty"`
+	SimpleItemDescription  []SimpleItemDescription  `json:","`
+	ElementItemDescription []ElementItemDescription `json:","`
+	Extension              *xsd.String              `json:","`
 }
 
 type SimpleItemDescription struct {
-	Name  string `json:",omitempty" xml:",attr"`
-	Type  string `json:",omitempty" xml:",attr"`
-	Value string `json:",omitempty" xml:",attr"`
+	Name  string `json:"," xml:",attr"`
+	Type  string `json:"," xml:",attr"`
+	Value string `json:"," xml:",attr"`
 }
 
 type ElementItemDescription struct {
-	Name  string `json:",omitempty" xml:",attr"`
-	Value string `json:",omitempty" xml:",attr"`
+	Name  string `json:"," xml:",attr"`
+	Value string `json:"," xml:",attr"`
 }
 
 type Messages struct {
-	IsProperty  *xsd.Boolean `json:",omitempty" xml:",attr"`
-	Source      *Source      `json:",omitempty"`
-	Key         *Key         `json:",omitempty"`
-	Data        *Data        `json:",omitempty"`
-	Extension   *xsd.String  `json:",omitempty"`
-	ParentTopic *xsd.String  `json:",omitempty"`
+	IsProperty  *xsd.Boolean `json:"," xml:",attr"`
+	Source      *Source      `json:","`
+	Key         *Key         `json:","`
+	Data        *Data        `json:","`
+	Extension   *xsd.String  `json:","`
+	ParentTopic *xsd.String  `json:","`
 }
 
 type Source struct {
-	SimpleItemDescription  []SimpleItemDescription  `json:",omitempty"`
-	ElementItemDescription []ElementItemDescription `json:",omitempty"`
-	Extension              *xsd.String              `json:",omitempty"`
+	SimpleItemDescription  []SimpleItemDescription  `json:","`
+	ElementItemDescription []ElementItemDescription `json:","`
+	Extension              *xsd.String              `json:","`
 }
 
 type Key struct {
-	SimpleItemDescription  []SimpleItemDescription  `json:",omitempty"`
-	ElementItemDescription []ElementItemDescription `json:",omitempty"`
-	Extension              *xsd.String              `json:",omitempty"`
+	SimpleItemDescription  []SimpleItemDescription  `json:","`
+	ElementItemDescription []ElementItemDescription `json:","`
+	Extension              *xsd.String              `json:","`
 }
 
 type Data struct {
-	SimpleItemDescription  []SimpleItemDescription  `json:",omitempty"`
-	ElementItemDescription []ElementItemDescription `json:",omitempty"`
-	Extension              *xsd.String              `json:",omitempty"`
+	SimpleItemDescription  []SimpleItemDescription  `json:","`
+	ElementItemDescription []ElementItemDescription `json:","`
+	Extension              *xsd.String              `json:","`
 }

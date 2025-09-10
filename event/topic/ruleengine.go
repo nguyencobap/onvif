@@ -4,11 +4,11 @@ import "github.com/nguyencobap/onvif/xsd"
 
 type RuleEngine struct {
 	Topic                *xsd.Boolean          `xml:"topic,attr"`
-	MotionRegionDetector *MotionRegionDetector `json:",omitempty" xml:",omitempty"`
-	CellMotionDetector   *CellMotionDetector   `json:",omitempty" xml:",omitempty"`
-	TamperDetector       *TamperDetector       `json:",omitempty" xml:",omitempty"`
-	Recognition          *Recognition          `json:",omitempty" xml:",omitempty"`
-	CountAggregation     *CountAggregation     `json:",omitempty" xml:",omitempty"`
+	MotionRegionDetector *MotionRegionDetector `json:"," xml:","`
+	CellMotionDetector   *CellMotionDetector   `json:"," xml:","`
+	TamperDetector       *TamperDetector       `json:"," xml:","`
+	Recognition          *Recognition          `json:"," xml:","`
+	CountAggregation     *CountAggregation     `json:"," xml:","`
 }
 
 type MotionRegionDetector struct {
@@ -23,7 +23,7 @@ type CellMotionDetector struct {
 
 type Motion struct {
 	Topic              *xsd.Boolean        `xml:"topic,attr"`
-	MessageDescription *MessageDescription `json:",omitempty" xml:",omitempty"`
+	MessageDescription *MessageDescription `json:"," xml:","`
 }
 
 type TamperDetector struct {
@@ -33,31 +33,31 @@ type TamperDetector struct {
 
 type Tamper struct {
 	Topic              *xsd.Boolean        `xml:"topic,attr"`
-	MessageDescription *MessageDescription `json:",omitempty" xml:",omitempty"`
+	MessageDescription *MessageDescription `json:"," xml:","`
 }
 
 type Recognition struct {
 	Topic        *xsd.Boolean `xml:"topic,attr"`
-	Face         *Face        `json:",omitempty" xml:",omitempty"`
-	LicensePlate *Face        `json:",omitempty" xml:",omitempty"`
+	Face         *Face        `json:"," xml:","`
+	LicensePlate *Face        `json:"," xml:","`
 }
 
 type Face struct {
 	Topic              *xsd.Boolean        `xml:"topic,attr"`
-	MessageDescription *MessageDescription `json:",omitempty" xml:",omitempty"`
+	MessageDescription *MessageDescription `json:"," xml:","`
 }
 
 type LicensePlate struct {
 	Topic              *xsd.Boolean        `xml:"topic,attr"`
-	MessageDescription *MessageDescription `json:",omitempty" xml:",omitempty"`
+	MessageDescription *MessageDescription `json:"," xml:","`
 }
 
 type CountAggregation struct {
 	Topic   *xsd.Boolean `xml:"topic,attr"`
-	Counter *Counter     `json:",omitempty" xml:",omitempty"`
+	Counter *Counter     `json:"," xml:","`
 }
 
 type Counter struct {
 	Topic              *xsd.Boolean        `xml:"topic,attr"`
-	MessageDescription *MessageDescription `json:",omitempty" xml:",omitempty"`
+	MessageDescription *MessageDescription `json:"," xml:","`
 }

@@ -20,16 +20,16 @@ type SOAPHeader struct {
 type SOAPBody struct {
 	XMLName xml.Name `xml:"http://www.w3.org/2003/05/soap-envelope Body"`
 
-	Fault   *SOAPFault  `xml:",omitempty"`
-	Content interface{} `xml:",omitempty"`
+	Fault   *SOAPFault  `xml:","`
+	Content interface{} `xml:","`
 }
 
 type SOAPFault struct {
 	XMLName xml.Name `xml:"http://www.w3.org/2003/05/soap-envelope Fault"`
 
-	Code   SOAPFaultCode   `xml:",omitempty"`
-	Reason SOAPFaultReason `xml:",omitempty"`
-	Detail SOAPFaultDetail `xml:",omitempty"`
+	Code   SOAPFaultCode   `xml:","`
+	Reason SOAPFaultReason `xml:","`
+	Detail SOAPFaultDetail `xml:","`
 }
 
 // UnmarshalXML the response body
@@ -87,12 +87,12 @@ Loop:
 
 type SOAPFaultCode struct {
 	Value   string           `xml:"Value"`
-	Subcode SOAPFaultSubCode `xml:"Subcode,omitempty"`
+	Subcode SOAPFaultSubCode `xml:"Subcode,"`
 }
 
 type SOAPFaultSubCode struct {
 	Value   string            `xml:"Value"`
-	Subcode *SOAPFaultSubCode `xml:"Subcode,omitempty"`
+	Subcode *SOAPFaultSubCode `xml:"Subcode,"`
 }
 
 type SOAPFaultReason struct {

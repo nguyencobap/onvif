@@ -19,17 +19,17 @@ type GetSupportedAnalyticsModulesResponse struct {
 }
 
 type SupportedAnalyticsModules struct {
-	Limit                                *xsd.Int                     `json:",omitempty"`
-	AnalyticsModuleContentSchemaLocation *xsd.String                  `json:",omitempty"`
-	AnalyticsModuleDescription           []AnalyticsModuleDescription `json:",omitempty"`
+	Limit                                *xsd.Int                     `json:","`
+	AnalyticsModuleContentSchemaLocation *xsd.String                  `json:","`
+	AnalyticsModuleDescription           []AnalyticsModuleDescription `json:","`
 }
 
 type AnalyticsModuleDescription struct {
 	Name         string      `xml:"Name,attr"`
 	Fixed        bool        `xml:"fixed,attr"`
 	MaxInstances int         `xml:"maxInstances,attr"`
-	Parameters   *Parameters `json:",omitempty"`
-	Messages     *Messages   `json:",omitempty"`
+	Parameters   *Parameters `json:","`
+	Messages     *Messages   `json:","`
 }
 
 // CreateAnalyticsModules and its properties are defined in the Onvif specification:
@@ -67,7 +67,7 @@ type GetAnalyticsModulesResponse struct {
 // https://www.onvif.org/ver20/analytics/wsdl/analytics.wsdl#op.GetAnalyticsModuleOptions
 type GetAnalyticsModuleOptions struct {
 	XMLName            string               `xml:"tan:GetAnalyticsModuleOptions"`
-	Type               xsd.QName            `xml:"tan:Type,omitempty"`
+	Type               xsd.QName            `xml:"tan:Type,"`
 	ConfigurationToken onvif.ReferenceToken `xml:"tan:ConfigurationToken"`
 }
 
@@ -76,12 +76,12 @@ type GetAnalyticsModuleOptionsResponse struct {
 }
 
 type AnalyticsModuleOptions struct {
-	RuleType        string       `json:",omitempty" xml:",attr"`
-	Name            string       `json:",omitempty" xml:",attr"`
-	Type            string       `json:",omitempty" xml:",attr"`
-	AnalyticsModule string       `json:",omitempty" xml:",attr"`
-	IntRange        *IntRange    `json:",omitempty"`
-	StringItems     *StringItems `json:",omitempty"`
+	RuleType        string       `json:"," xml:",attr"`
+	Name            string       `json:"," xml:",attr"`
+	Type            string       `json:"," xml:",attr"`
+	AnalyticsModule string       `json:"," xml:",attr"`
+	IntRange        *IntRange    `json:","`
+	StringItems     *StringItems `json:","`
 }
 
 type IntRange struct {
@@ -115,17 +115,17 @@ type GetSupportedRulesResponse struct {
 }
 
 type SupportedRules struct {
-	Limit                     *xsd.Int    `json:",omitempty"`
-	RuleContentSchemaLocation *xsd.String `json:",omitempty"`
+	Limit                     *xsd.Int    `json:","`
+	RuleContentSchemaLocation *xsd.String `json:","`
 	RuleDescription           []RuleDescription
 }
 
 type RuleDescription struct {
-	Name         *xsd.String  `json:",omitempty" xml:",attr"`
-	Fixed        *xsd.Boolean `json:",omitempty" xml:"fixed,attr"`
-	MaxInstances *xsd.Int     `json:",omitempty" xml:"maxInstances,attr"`
+	Name         *xsd.String  `json:"," xml:",attr"`
+	Fixed        *xsd.Boolean `json:"," xml:"fixed,attr"`
+	MaxInstances *xsd.Int     `json:"," xml:"maxInstances,attr"`
 	Parameters   Parameters
-	Messages     Messages `json:",omitempty"`
+	Messages     Messages `json:","`
 }
 
 // GetRules and its properties are defined in the Onvif specification:
@@ -174,17 +174,17 @@ type GetRuleOptionsResponse struct {
 }
 
 type RuleOptions struct {
-	RuleType                  *xsd.String                `json:",omitempty"`
-	Name                      *xsd.String                `json:",omitempty" xml:",attr"`
-	Type                      *xsd.String                `json:",omitempty" xml:",attr"`
-	MinOccurs                 *xsd.String                `json:",omitempty" xml:"minOccurs,attr"`
-	MaxOccurs                 *xsd.String                `json:",omitempty" xml:"maxOccurs,attr"`
-	AnalyticsModule           *xsd.String                `json:",omitempty"`
-	IntRange                  *IntRange                  `json:",omitempty"`
-	StringItems               *StringItems               `json:",omitempty"`
-	PolygonOptions            *PolygonOptions            `json:",omitempty"`
-	MotionRegionConfigOptions *MotionRegionConfigOptions `json:",omitempty"`
-	StringList                *xsd.String                `json:",omitempty"`
+	RuleType                  *xsd.String                `json:","`
+	Name                      *xsd.String                `json:"," xml:",attr"`
+	Type                      *xsd.String                `json:"," xml:",attr"`
+	MinOccurs                 *xsd.String                `json:"," xml:"minOccurs,attr"`
+	MaxOccurs                 *xsd.String                `json:"," xml:"maxOccurs,attr"`
+	AnalyticsModule           *xsd.String                `json:","`
+	IntRange                  *IntRange                  `json:","`
+	StringItems               *StringItems               `json:","`
+	PolygonOptions            *PolygonOptions            `json:","`
+	MotionRegionConfigOptions *MotionRegionConfigOptions `json:","`
+	StringList                *xsd.String                `json:","`
 }
 
 type PolygonOptions struct {
