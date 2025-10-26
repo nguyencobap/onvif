@@ -1195,6 +1195,28 @@ type PTZPresetTourPresetDetail struct {
 	PTZPosition   *PTZVector                  `xml:"PTZPosition,omitempty"`
 	TypeExtension *PTZPresetTourTypeExtension `xml:"TypeExtension,omitempty"`
 }
+
+type PresetTourModify struct {
+	Token             ReferenceToken                  `xml:"token,attr"`
+	Name              *Name                           `xml:"onvif:Name,omitempty"`
+	AutoStart         *xsd.Boolean                    `xml:"onvif:AutoStart,omitempty"`
+	StartingCondition *PTZPresetTourStartingCondition `xml:"onvif:StartingCondition,omitempty"`
+	TourSpot          []PTZPresetTourSpotModify       `xml:"onvif:TourSpot,omitempty"`
+	Extension         *PTZPresetTourExtension         `xml:"onvif:Extension,omitempty"`
+}
+
+type PTZPresetTourSpotModify struct {
+	PresetDetail *PTZPresetTourPresetDetailModify `xml:"onvif:PresetDetail,omitempty"`
+	Speed        *PTZSpeed                        `xml:"onvif:Speed,omitempty"`
+	StayTime     *xsd.Duration                    `xml:"onvif:StayTime,omitempty"`
+	Extension    *PTZPresetTourSpotExtension      `xml:"onvif:Extension,omitempty"`
+}
+
+type PTZPresetTourPresetDetailModify struct {
+	PresetToken   ReferenceToken              `xml:"onvif:PresetToken"`
+	Home          *xsd.Boolean                `xml:"onvif:Home,omitempty"`
+	PTZPosition   *PTZVector                  `xml:"onvif:PTZPosition,omitempty"`
+	TypeExtension *PTZPresetTourTypeExtension `xml:"onvif:TypeExtension,omitempty"`
 }
 
 type PTZPresetTourTypeExtension xsd.AnyType
