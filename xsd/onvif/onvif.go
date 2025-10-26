@@ -1166,34 +1166,35 @@ type GeoLocation struct {
 
 type PresetTour struct {
 	Token             ReferenceToken                 `xml:"token,attr"`
-	Name              Name                           `xml:"Name"`
+	Name              *Name                          `xml:"Name,omitempty"`
 	Status            PTZPresetTourStatus            `xml:"Status"`
 	AutoStart         xsd.Boolean                    `xml:"AutoStart"`
 	StartingCondition PTZPresetTourStartingCondition `xml:"StartingCondition"`
-	TourSpot          PTZPresetTourSpot              `xml:"TourSpot"`
-	Extension         PTZPresetTourExtension         `xml:"Extension"`
+	TourSpot          []PTZPresetTourSpot            `xml:"TourSpot,omitempty"`
+	Extension         *PTZPresetTourExtension        `xml:"Extension,omitempty"`
 }
 
 type PTZPresetTourStatus struct {
-	State           PTZPresetTourState           `xml:"State"`
-	CurrentTourSpot PTZPresetTourSpot            `xml:"CurrentTourSpot"`
-	Extension       PTZPresetTourStatusExtension `xml:"Extension"`
+	State           PTZPresetTourState            `xml:"State"`
+	CurrentTourSpot *PTZPresetTourSpot            `xml:"CurrentTourSpot,omitempty"`
+	Extension       *PTZPresetTourStatusExtension `xml:"Extension,omitempty"`
 }
 
 type PTZPresetTourState xsd.String
 
 type PTZPresetTourSpot struct {
-	PresetDetail PTZPresetTourPresetDetail  `xml:"PresetDetail"`
-	Speed        PTZSpeed                   `xml:"Speed"`
-	StayTime     xsd.Duration               `xml:"StayTime"`
-	Extension    PTZPresetTourSpotExtension `xml:"Extension"`
+	PresetDetail PTZPresetTourPresetDetail   `xml:"PresetDetail"`
+	Speed        *PTZSpeed                   `xml:"Speed,omitempty"`
+	StayTime     *xsd.Duration               `xml:"StayTime,omitempty"`
+	Extension    *PTZPresetTourSpotExtension `xml:"Extension,omitempty"`
 }
 
 type PTZPresetTourPresetDetail struct {
-	PresetToken   ReferenceToken             `xml:"PresetToken"`
-	Home          xsd.Boolean                `xml:"Home"`
-	PTZPosition   PTZVector                  `xml:"PTZPosition"`
-	TypeExtension PTZPresetTourTypeExtension `xml:"TypeExtension"`
+	PresetToken   ReferenceToken              `xml:"PresetToken"`
+	Home          *xsd.Boolean                `xml:"Home,omitempty"`
+	PTZPosition   *PTZVector                  `xml:"PTZPosition,omitempty"`
+	TypeExtension *PTZPresetTourTypeExtension `xml:"TypeExtension,omitempty"`
+}
 }
 
 type PTZPresetTourTypeExtension xsd.AnyType
@@ -1203,11 +1204,11 @@ type PTZPresetTourSpotExtension xsd.AnyType
 type PTZPresetTourStatusExtension xsd.AnyType
 
 type PTZPresetTourStartingCondition struct {
-	RandomPresetOrder xsd.Boolean                             `xml:"RandomPresetOrder,attr"`
-	RecurringTime     xsd.Int                                 `xml:"RecurringTime"`
-	RecurringDuration xsd.Duration                            `xml:"RecurringDuration"`
-	Direction         PTZPresetTourDirection                  `xml:"Direction"`
-	Extension         PTZPresetTourStartingConditionExtension `xml:"Extension"`
+	RandomPresetOrder xsd.Boolean                              `xml:"RandomPresetOrder,attr"`
+	RecurringTime     *xsd.Int                                 `xml:"RecurringTime,omitempty"`
+	RecurringDuration *xsd.Duration                            `xml:"RecurringDuration,omitempty"`
+	Direction         *PTZPresetTourDirection                  `xml:"Direction,omitempty"`
+	Extension         *PTZPresetTourStartingConditionExtension `xml:"Extension,omitempty"`
 }
 
 type PTZPresetTourDirection xsd.String
