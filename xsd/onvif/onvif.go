@@ -1224,10 +1224,10 @@ type PTZPresetTourOptions struct {
 }
 
 type PTZPresetTourStartingConditionOptions struct {
-	RecurringTime     IntRange
-	RecurringDuration DurationRange
-	Direction         PTZPresetTourDirection
-	Extension         PTZPresetTourStartingConditionOptionsExtension
+	RecurringTime     *IntRange                                       `xml:",omitempty"`
+	RecurringDuration *DurationRange                                  `xml:",omitempty"`
+	Direction         *PTZPresetTourDirection                         `xml:",omitempty"`
+	Extension         *PTZPresetTourStartingConditionOptionsExtension `xml:",omitempty"`
 }
 
 type PTZPresetTourStartingConditionOptionsExtension xsd.AnyType
@@ -1238,11 +1238,11 @@ type PTZPresetTourSpotOptions struct {
 }
 
 type PTZPresetTourPresetDetailOptions struct {
-	PresetToken          ReferenceToken
-	Home                 xsd.Boolean
-	PanTiltPositionSpace Space2DDescription
-	ZoomPositionSpace    Space1DDescription
-	Extension            PTZPresetTourPresetDetailOptionsExtension
+	PresetToken          []ReferenceToken                           `xml:",omitempty"`
+	Home                 *xsd.Boolean                               `xml:",omitempty"`
+	PanTiltPositionSpace *Space2DDescription                        `xml:",omitempty"`
+	ZoomPositionSpace    *Space1DDescription                        `xml:",omitempty"`
+	Extension            *PTZPresetTourPresetDetailOptionsExtension `xml:",omitempty"`
 }
 
 type PTZPresetTourPresetDetailOptionsExtension xsd.AnyType
