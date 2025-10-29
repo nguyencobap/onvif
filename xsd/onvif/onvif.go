@@ -641,11 +641,16 @@ type PTZConfiguration struct {
 	DefaultRelativeZoomTranslationSpace    *xsd.AnyURI                `json:",omitempty" xml:",omitempty"`
 	DefaultContinuousPanTiltVelocitySpace  *xsd.AnyURI                `json:",omitempty" xml:",omitempty"`
 	DefaultContinuousZoomVelocitySpace     *xsd.AnyURI                `json:",omitempty" xml:",omitempty"`
-	DefaultPTZSpeed                        *PTZSpeed                  `json:",omitempty" xml:",omitempty"`
+	DefaultPTZSpeed                        *DefaultPTZSpeed           `json:",omitempty" xml:",omitempty"`
 	DefaultPTZTimeout                      *xsd.Duration              `json:",omitempty" xml:",omitempty"`
 	PanTiltLimits                          *PanTiltLimits             `json:",omitempty" xml:",omitempty"`
 	ZoomLimits                             *ZoomLimits                `json:",omitempty" xml:",omitempty"`
 	Extension                              *PTZConfigurationExtension `json:",omitempty" xml:",omitempty"`
+}
+
+type DefaultPTZSpeed struct {
+	PanTilt *Vector2D `json:",omitempty" xml:"PanTilt,omitempty"`
+	Zoom    *Vector1D `json:",omitempty" xml:"Zoom,omitempty"`
 }
 
 type PTZConfigurationEntity struct {
