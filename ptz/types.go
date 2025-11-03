@@ -240,7 +240,8 @@ type GetPresetTourOptions struct {
 }
 
 type GetPresetTourOptionsResponse struct {
-	Options onvif.PTZPresetTourOptions
+	Options  onvif.PTZPresetTourOptions
+	TourSpot onvif.PTZPresetTourSpotOptions
 }
 
 type CreatePresetTour struct {

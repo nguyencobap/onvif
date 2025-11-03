@@ -1247,7 +1247,7 @@ type PTZPresetTourExtension xsd.AnyType
 type PTZPresetTourOptions struct {
 	AutoStart         xsd.Boolean
 	StartingCondition PTZPresetTourStartingConditionOptions
-	TourSpot          PTZPresetTourSpotOptions
+	TourSpot          *PTZPresetTourSpotOptions
 }
 
 type PTZPresetTourStartingConditionOptions struct {
