@@ -37,7 +37,7 @@ func (dc *DigestClient) Do(httpMethod string, endpoint string, soap string) (*ht
 		return nil, err
 	}
 	if dc.snonce != "" {
-		digestAuth, err := dc.getDigestAuth(req.Method, req.URL.String())
+		digestAuth, err := dc.getDigestAuth(req.Method, req.URL.RequestURI())
 		if err != nil {
 			return nil, err
 		}
@@ -62,7 +62,7 @@ func (dc *DigestClient) Do(httpMethod string, endpoint string, soap string) (*ht
 	if err != nil {
 		return nil, err
 	}
-	digestAuth, err := dc.getDigestAuth(req.Method, req.URL.String())
+	digestAuth, err := dc.getDigestAuth(req.Method, req.URL.RequestURI())
 	if err != nil {
 		return nil, err
 	}
