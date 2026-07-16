@@ -15,6 +15,7 @@ import (
 
 	"github.com/nguyencobap/onvif/device"
 	"github.com/nguyencobap/onvif/gosoap"
+	"github.com/nguyencobap/onvif/ptz"
 	"github.com/nguyencobap/onvif/xsd/onvif"
 
 	"github.com/beevik/etree"
@@ -90,6 +91,7 @@ type Device struct {
 	endpoints    map[string]string
 	info         DeviceInfo
 	digestClient *DigestClient
+	ptzNodes     []onvif.PTZNode
 }
 
 type DeviceParams struct {
@@ -180,7 +182,45 @@ func NewDevice(params DeviceParams) (*Device, error) {
 	}
 
 	dev.getSupportedServices(resp)
+	dev.getPTZNodes()
 	return dev, nil
+}
+
+// GetPTZNodes returns what the camera said it could do when it was reached, so a
+// caller can pick a coordinate space without asking it again before every move.
+// Empty for a camera with no PTZ, and for one that would not answer.
+func (dev *Device) GetPTZNodes() []onvif.PTZNode {
+	return dev.ptzNodes
+}
+
+// A node's spaces are fixed for as long as the camera is up, so they are worth one
+// round trip here rather than one per move. Cameras with no PTZ service are not
+// asked, and a camera that refuses leaves the device usable for everything else.
+func (dev *Device) getPTZNodes() {
+	if _, ok := dev.endpoints[strings.ToLower(PTZWebService)]; !ok {
+		return
+	}
+
+	resp, err := dev.CallMethod(ptz.GetNodes{})
+	if err != nil || resp.StatusCode != http.StatusOK {
+		return
+	}
+	defer resp.Body.Close()
+
+	data, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return
+	}
+
+	var envelope struct {
+		Body struct {
+			GetNodesResponse ptz.GetNodesResponse
+		}
+	}
+	if err := xml.Unmarshal(data, &envelope); err != nil {
+		return
+	}
+	dev.ptzNodes = envelope.Body.GetNodesResponse.PTZNode
 }
 
 func (dev *Device) addEndpoint(Key, Value string) {

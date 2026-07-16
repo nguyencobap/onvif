@@ -1065,14 +1065,14 @@ type PTZNode struct {
 }
 
 type PTZSpaces struct {
-	AbsolutePanTiltPositionSpace    Space2DDescription
-	AbsoluteZoomPositionSpace       Space1DDescription
-	RelativePanTiltTranslationSpace Space2DDescription
-	RelativeZoomTranslationSpace    Space1DDescription
-	ContinuousPanTiltVelocitySpace  Space2DDescription
-	ContinuousZoomVelocitySpace     Space1DDescription
-	PanTiltSpeedSpace               Space1DDescription
-	ZoomSpeedSpace                  Space1DDescription
+	AbsolutePanTiltPositionSpace    []Space2DDescription
+	AbsoluteZoomPositionSpace       []Space1DDescription
+	RelativePanTiltTranslationSpace []Space2DDescription
+	RelativeZoomTranslationSpace    []Space1DDescription
+	ContinuousPanTiltVelocitySpace  []Space2DDescription
+	ContinuousZoomVelocitySpace     []Space1DDescription
+	PanTiltSpeedSpace               []Space1DDescription
+	ZoomSpeedSpace                  []Space1DDescription
 	Extension                       PTZSpacesExtension
 }
 
