@@ -177,8 +177,16 @@ func NewDevice(params DeviceParams) (*Device, error) {
 
 	resp, err := dev.CallMethod(getCapabilities)
 
-	if err != nil || resp.StatusCode != http.StatusOK {
-		return nil, errors.New("camera is not available at " + dev.params.Xaddr + " or it does not support ONVIF services")
+	if err != nil {
+		return nil, fmt.Errorf("camera is not available at %s or it does not support ONVIF services: GetCapabilities request failed: %w", dev.params.Xaddr, err)
+	}
+	if resp.StatusCode != http.StatusOK {
+		body, readErr := io.ReadAll(resp.Body)
+		resp.Body.Close()
+		if readErr != nil {
+			return nil, fmt.Errorf("camera is not available at %s or it does not support ONVIF services: GetCapabilities returned %s; read response body failed: %w", dev.params.Xaddr, resp.Status, readErr)
+		}
+		return nil, fmt.Errorf("camera is not available at %s or it does not support ONVIF services: GetCapabilities returned %s: %s", dev.params.Xaddr, resp.Status, strings.TrimSpace(string(body)))
 	}
 
 	dev.getSupportedServices(resp)
