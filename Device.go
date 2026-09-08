@@ -40,7 +40,7 @@ var Xlmns = map[string]string{
 	"wsrf-rw": "http://docs.oasis-open.org/wsrf/rw-2",
 	"wsaw":    "http://www.w3.org/2006/05/addressing/wsdl",
 	"tt":      "http://www.onvif.org/ver10/recording/wsdl",
-	"wsse":    "http://docs.oasis-open.org/wss/2004/01/oasis-200401",
+	"wsse":    "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",
 	"wsu":     "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd",
 }
 
@@ -308,22 +308,28 @@ func (dev *Device) GetEndpointByRequestStruct(requestStruct interface{}) (string
 	return endpoint, err
 }
 
+func (dev *Device) buildSOAP(body string, security bool) (string, error) {
+	if !security {
+		return gosoap.BuildSOAP(body, Xlmns)
+	}
+	header, err := xml.Marshal(gosoap.NewSecurity(dev.params.Username, dev.params.Password))
+	if err != nil {
+		return "", err
+	}
+	return gosoap.BuildSOAP(body, Xlmns, string(header))
+}
+
 func (dev *Device) SendSoap(endpoint string, xmlRequestBody string) (resp *http.Response, err error) {
-	soap := gosoap.NewEmptySOAP()
-	soap.AddStringBodyContent(xmlRequestBody)
-	soap.AddRootNamespaces(Xlmns)
-	if dev.params.AuthMode == UsernameTokenAuth || dev.params.AuthMode == Both {
-		err = soap.AddWSSecurity(dev.params.Username, dev.params.Password)
-		if err != nil {
-			return nil, fmt.Errorf("send soap request failed: %w", err)
-		}
+	soap, err := dev.buildSOAP(xmlRequestBody, dev.params.AuthMode == UsernameTokenAuth || dev.params.AuthMode == Both)
+	if err != nil {
+		return nil, fmt.Errorf("send soap request failed: %w", err)
 	}
 
 	if dev.params.AuthMode == DigestAuth || dev.params.AuthMode == Both {
-		resp, err = dev.digestClient.Do(http.MethodPost, endpoint, soap.String())
+		resp, err = dev.digestClient.Do(http.MethodPost, endpoint, soap)
 	} else {
 		var req *http.Request
-		req, err = createHttpRequest(http.MethodPost, endpoint, soap.String())
+		req, err = createHttpRequest(http.MethodPost, endpoint, soap)
 		if err != nil {
 			return nil, err
 		}
@@ -415,15 +421,14 @@ func createResponse(function Function, data []byte) (*gosoap.SOAPEnvelope, error
 // SendGetSnapshotRequest sends the Get request to retrieve the snapshot from the Onvif camera
 // The parameter url is come from the "GetSnapshotURI" command.
 func (dev *Device) SendGetSnapshotRequest(url string) (resp *http.Response, err error) {
-	soap := gosoap.NewEmptySOAP()
-	soap.AddRootNamespaces(Xlmns)
+	security := dev.params.AuthMode == UsernameTokenAuth || dev.params.AuthMode == DigestAuth || dev.params.AuthMode == Both
+	soap, err := dev.buildSOAP("", security)
+	if err != nil {
+		return nil, fmt.Errorf("send GetSnapshotRequest failed: %w", err)
+	}
 	if dev.params.AuthMode == UsernameTokenAuth {
-		err = soap.AddWSSecurity(dev.params.Username, dev.params.Password)
-		if err != nil {
-			return nil, fmt.Errorf("send GetSnapshotRequest failed: %w", err)
-		}
 		var req *http.Request
-		req, err = createHttpRequest(http.MethodGet, url, soap.String())
+		req, err = createHttpRequest(http.MethodGet, url, soap)
 		if err != nil {
 			return nil, err
 		}
@@ -432,15 +437,11 @@ func (dev *Device) SendGetSnapshotRequest(url string) (resp *http.Response, err 
 		resp, err = dev.params.HttpClient.Do(req)
 
 	} else if dev.params.AuthMode == DigestAuth || dev.params.AuthMode == Both {
-		err = soap.AddWSSecurity(dev.params.Username, dev.params.Password)
-		if err != nil {
-			return nil, fmt.Errorf("send GetSnapshotRequest failed: %w", err)
-		}
-		resp, err = dev.digestClient.Do(http.MethodGet, url, soap.String())
+		resp, err = dev.digestClient.Do(http.MethodGet, url, soap)
 
 	} else {
 		var req *http.Request
-		req, err = createHttpRequest(http.MethodGet, url, soap.String())
+		req, err = createHttpRequest(http.MethodGet, url, soap)
 		if err != nil {
 			return nil, err
 		}

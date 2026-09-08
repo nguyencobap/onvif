@@ -208,25 +208,23 @@ func (msg *SoapMessage) AddRootNamespace(key, value string) {
 
 // AddRootNamespaces for Envelope body
 func (msg *SoapMessage) AddRootNamespaces(namespaces map[string]string) {
-	for key, value := range namespaces {
-		msg.AddRootNamespace(key, value)
+	doc := etree.NewDocument()
+	if err := doc.ReadFromString(msg.String()); err != nil {
+		log.Println(err.Error())
+		return
 	}
-
-	/*
-		doc := etree.NewDocument()
-		if err := doc.ReadFromString(msg.String()); err != nil {
-			//log.Println(err.Error())
-			return err
-		}
-
-		for key, value := range namespaces {
-			doc.Root().CreateAttr("xmlns:" + key, value)
-		}
-
-		doc.IndentTabs()
-		res, _ := doc.WriteToString()
-
-		*msg = SoapMessage(res)*/
+	if doc.Root() == nil {
+		return
+	}
+	for key, value := range namespaces {
+		doc.Root().CreateAttr("xmlns:"+key, value)
+	}
+	res, err := doc.WriteToString()
+	if err != nil {
+		log.Println(err.Error())
+		return
+	}
+	*msg = SoapMessage(res)
 }
 
 func buildSoapRoot() *etree.Document {

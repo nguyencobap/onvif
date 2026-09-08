@@ -1,6 +1,7 @@
 package api
 
 import (
+	"encoding/xml"
 	"errors"
 	"fmt"
 	"io"
@@ -12,7 +13,6 @@ import (
 
 	"github.com/nguyencobap/onvif"
 	"github.com/nguyencobap/onvif/gosoap"
-	"github.com/nguyencobap/onvif/networking"
 	wsdiscovery "github.com/nguyencobap/onvif/ws-discovery"
 
 	"github.com/beevik/etree"
@@ -147,15 +147,16 @@ func callNecessaryMethod(serviceName, methodName, acceptedData, username, passwo
 		return "", err
 	}
 
-	soap := gosoap.NewEmptySOAP()
-	soap.AddStringBodyContent(*resp)
-	soap.AddRootNamespaces(onvif.Xlmns)
-	err = soap.AddWSSecurity(username, password)
+	header, err := xml.Marshal(gosoap.NewSecurity(username, password))
+	if err != nil {
+		return "", fmt.Errorf("call necessary method failed: %w", err)
+	}
+	soap, err := gosoap.BuildSOAP(*resp, onvif.Xlmns, string(header))
 	if err != nil {
 		return "", fmt.Errorf("call necessary method failed: %w", err)
 	}
 
-	servResp, err := networking.SendSoap(new(http.Client), endpoint, soap.String())
+	servResp, err := new(http.Client).Post(endpoint, "application/soap+xml; charset=utf-8", strings.NewReader(soap))
 	if err != nil {
 		return "", err
 	}
