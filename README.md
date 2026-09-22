@@ -33,6 +33,23 @@ If there is a device on the network at the address *192.168.13.42*, and its ONVI
 dev, err := onvif.NewDevice(onvif.DeviceParams{Xaddr: "192.168.13.42:1234"})
 ```
 
+`Xaddr` also accepts an HTTP or HTTPS URL:
+
+```go
+dev, err := onvif.NewDevice(onvif.DeviceParams{Xaddr: "https://192.168.13.42:443/onvif/device_service"})
+```
+
+Without a scheme, the initial connection uses HTTP. An empty or root URL path
+defaults to `/onvif/device_service`; a custom path and query are preserved.
+For an explicit URL, discovered service endpoints use the configured scheme and
+host while retaining their advertised paths and queries. WS-Discovery preserves
+the advertised device URL when connecting.
+
+HTTPS uses normal certificate verification. Pass `DeviceParams.HttpClient` with
+a transport configured with the camera's trusted CA when using a private CA or
+self-signed certificate. Credentials belong in `Username` and `Password`, not
+in the URL.
+
 *The ONVIF port may differ depending on the device , to find out which port to use, you can go to the web interface of the device. **Usually this is 80 port.***
 
 #### Authentication

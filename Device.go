@@ -163,10 +163,25 @@ func (dev *Device) getSupportedServices(resp *http.Response) {
 
 // NewDevice function construct a ONVIF Device entity
 func NewDevice(params DeviceParams) (*Device, error) {
+	xaddr := params.Xaddr
+	if !strings.Contains(xaddr, "://") {
+		xaddr = "http://" + xaddr
+	}
+	endpoint, err := url.Parse(xaddr)
+	if err != nil {
+		return nil, fmt.Errorf("invalid Xaddr: %w", err)
+	}
+	if (endpoint.Scheme != "http" && endpoint.Scheme != "https") || endpoint.Hostname() == "" || endpoint.User != nil || endpoint.Fragment != "" {
+		return nil, errors.New("invalid Xaddr: expected an HTTP(S) address with a host and no userinfo or fragment")
+	}
+	if endpoint.Path == "" || endpoint.Path == "/" {
+		endpoint.Path = "/onvif/device_service"
+	}
+
 	dev := new(Device)
 	dev.params = params
 	dev.endpoints = make(map[string]string)
-	dev.addEndpoint("Device", "http://"+dev.params.Xaddr+"/onvif/device_service")
+	dev.addEndpoint("Device", endpoint.String())
 
 	if dev.params.HttpClient == nil {
 		dev.params.HttpClient = new(http.Client)
@@ -239,6 +254,11 @@ func (dev *Device) addEndpoint(Key, Value string) {
 	// Replace host with host from device params.
 	if u, err := url.Parse(Value); err == nil {
 		u.Host = dev.params.Xaddr
+		// An explicit URL also selects the scheme for advertised service endpoints.
+		if base, err := url.Parse(dev.params.Xaddr); err == nil && base.Host != "" {
+			u.Host = base.Host
+			u.Scheme = base.Scheme
+		}
 		Value = u.String()
 	}
 

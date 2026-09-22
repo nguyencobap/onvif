@@ -69,7 +69,7 @@ func DevicesFromProbeResponses(probeResponses []string) ([]onvif.Device, error) 
 					// TODO: Add logger for fmt.Printf("Invalid XAddrs: %s\n", address.Text())
 					continue
 				}
-				xaddr = u.Host
+				xaddr = u.String()
 			}
 			if _, dupe := xaddrSet[xaddr]; dupe {
 				// TODO: Add logger for fmt.Printf("Skipping duplicate XAddr: %s\n", xaddr)
